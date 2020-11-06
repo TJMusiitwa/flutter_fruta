@@ -1,0 +1,149 @@
+Assets from Unsplash are covered under the Unsplash License: https://unsplash.com/license
+
+assets/ingredient/almond-milk.imageset/
+Images created by Nikolai Chernichenko
+https://unsplash.com/photos/S1HuosAnX-Y
+
+assets/ingredient/avocado.imageset/
+Images created by Thought Catalog
+https://unsplash.com/photos/9aOswReDKPo
+
+assets/ingredient/banana.imageset/
+Images created by Tim Foster
+https://unsplash.com/photos/fS_iWTE3Umk
+
+assets/ingredient/blueberry.imageset/
+Images created by Aliona Gumeniuk
+https://unsplash.com/photos/Y9WTwredge0
+
+assets/ingredient/carrot.imageset
+Images created by Oriol Portell
+https://unsplash.com/photos/bHdiBIWrtTE
+
+assets/ingredient/chocolate.imageset/
+Images created by Tetiana Bykovets
+https://unsplash.com/photos/YemxYB75xvI
+
+assets/ingredient/coconut.imageset/
+Images created by Irene Kredenets
+https://unsplash.com/photos/E95Lpkg-bgc
+
+assets/ingredient/kiwi.imageset/
+Images created by engin akyurt
+https://unsplash.com/photos/jPVcZsxRGJo
+
+assets/ingredient/lemon.imageset/
+Images created by Giorgio Trovato
+https://unsplash.com/photos/cw1MAVs4wV8
+
+assets/ingredient/mango.imageset/
+Images created by Isaac N.C.
+https://unsplash.com/photos/JPTijx1OUxg
+
+assets/ingredient/orange.imageset/
+Images created by Mae Mu
+https://unsplash.com/photos/8Vh6ulKc50o
+
+assets/ingredient/papaya.imageset/
+Images created by Charles Deluvio
+https://unsplash.com/photos/yPI38imbQSI
+
+assets/ingredient/peanut-butter.imageset/
+Images created by Corleto Peanut butter
+https://unsplash.com/photos/u256GzFi7Gw
+
+assets/ingredient/pineapple.imageset/
+Images created by Miguel Andrade
+https://unsplash.com/photos/nAOZCYcLND8
+
+assets/ingredient/raspberry.imageset/
+Images created by Anto Meneghini
+https://unsplash.com/photos/gQyTxSrctvw
+
+assets/ingredient/spinach.imageset/
+Images created by Louis Hansel
+https://unsplash.com/photos/aKkfva3IdTw
+
+assets/ingredient/strawberry.imageset/
+Images created by Louis Hansel
+https://unsplash.com/photos/5HbKy-24St4
+
+assets/ingredient/water.imageset/
+Images created by manu schwendener
+https://unsplash.com/photos/zFEY4DP4h6c
+
+assets/ingredient/watermelon.imageset/
+Images created by Mockup Graphics
+https://unsplash.com/photos/13PBliWTDng
+
+assets/ingredient/watermelon.imageset/
+Images created by Mockup Graphics
+https://unsplash.com/photos/13PBliWTDng
+
+assets/smoothie/berry-blue.imageset/
+Images created by Tara Evans
+https://unsplash.com/photos/lnz6eLsQrMM
+
+assets/smoothie/carrot-chops.imageset/
+Images created by Louis Hansel
+https://unsplash.com/photos/ETQfAg326eg
+
+assets/smoothie/hulking-lemonade.imageset/
+Images created by Alina Karpenko
+https://unsplash.com/photos/jH1PBHevj38
+
+assets/smoothie/if-you-like-pina-colada.imageset/
+Images created by Christie Lanzilotti
+https://unsplash.com/photos/2hLvi-ruPZ0
+
+assets/smoothie/kiwi-cutie.imageset/
+Images created by Alexander Mils
+https://unsplash.com/photos/nG4ZimMIO_k
+
+assets/smoothie/lemonberry.imageset/
+Images created by Alex Loup
+https://unsplash.com/photos/HDjExSGuWUw
+
+assets/smoothie/love-you-berry-much.imageset/
+Images created by Francesca Hotchin
+https://unsplash.com/photos/DSxurmhrfuc
+
+assets/smoothie/mango-jambo.imageset/
+Images created by Alexander Mils
+https://unsplash.com/photos/pPhN8HFzkDE
+
+assets/smoothie/mango-jambo.imageset/
+Images created by Alexander Mils
+https://unsplash.com/photos/pPhN8HFzkDE
+
+assets/smoothie/one-in-a-melon.imageset/
+Images created by Yulia Khlebnikova
+https://unsplash.com/photos/yIE7pZUmT_s
+
+assets/smoothie/papas-papaya.imageset/
+Images created by Marcos Paulo Prado
+https://unsplash.com/photos/2Wc8OUcfqgs
+
+assets/smoothie/peanut-butter-cup.imageset/
+Images created by Sarah Gualtieri
+https://unsplash.com/photos/K3aaLUeCnIg
+
+assets/smoothie/recipes-background.imageset/
+Images created by Stephanie Studer
+https://unsplash.com/photos/KBehqzCvWuw
+
+assets/smoothie/sailor-man.imageset/
+Images created by Monika Grabkowska
+https://unsplash.com/photos/HSKUAXF-LEU
+
+assets/smoothie/thats-a-smore.imageset/
+Images created by American Heritage Chocolate
+https://unsplash.com/photos/qBvPsW2PZVE
+
+assets/smoothie/thats-berry-bananas.imageset/
+Images created by Element5 Digital
+https://unsplash.com/photos/CpBBsda2eRI
+
+assets/smoothie/tropical-blue.imageset
+Images created by Joackim Weiler
+https://unsplash.com/photos/WsGd0OoKam8

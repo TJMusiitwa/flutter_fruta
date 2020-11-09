@@ -27,6 +27,7 @@ dependencies:
   cupertino_fullscreen_modal: ^0.0.1
   cupertino_icons: ^1.0.0
   cupertino_list_tile: ^0.1.4
+  flip_card: ^0.4.4
   modal_bottom_sheet: ^0.2.2
 
 dev_dependencies:

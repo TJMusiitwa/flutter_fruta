@@ -3,8 +3,14 @@ import 'package:flutter_fruta/screens/favourites_screen.dart';
 import 'package:flutter_fruta/screens/menu_screen.dart';
 import 'package:flutter_fruta/screens/recipes_screen.dart';
 import 'package:flutter_fruta/screens/rewards_screen.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('frutaFavourites');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -22,10 +28,10 @@ class MyApp extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.heart_fill), label: 'Favourites'),
               BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.book_fill), label: 'Recipes'),
-              BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.checkmark_seal_fill),
                   label: 'Rewards'),
+              BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.book_fill), label: 'Recipes'),
             ],
           ),
           tabBuilder: (context, index) {
@@ -46,13 +52,13 @@ class MyApp extends StatelessWidget {
               case 2:
                 returnValue = CupertinoTabView(
                   builder: (context) =>
-                      CupertinoPageScaffold(child: RecipesScreen()),
+                      CupertinoPageScaffold(child: RewardsScreen()),
                 );
                 break;
               case 3:
                 returnValue = CupertinoTabView(
                   builder: (context) =>
-                      CupertinoPageScaffold(child: RewardsScreen()),
+                      CupertinoPageScaffold(child: RecipesScreen()),
                 );
                 break;
             }

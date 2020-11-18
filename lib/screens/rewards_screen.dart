@@ -15,12 +15,29 @@ class _RewardsScreenState extends State<RewardsScreen>
       child: AnimatedBackground(
         child: Center(
           child: PhysicalModel(
-            color: CupertinoColors.lightBackgroundGray,
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            shadowColor: CupertinoColors.black,
-            elevation: 2,
-            child: Text('Rewards Card'),
-          ),
+              color: CupertinoColors.lightBackgroundGray,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              shadowColor: CupertinoColors.black,
+              elevation: 2,
+              child: Container(
+                height: 180,
+                width: 350,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        'Rewards Card',
+                        style: CupertinoTheme.of(context)
+                            .textTheme
+                            .dateTimePickerTextStyle
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
         ),
         vsync: this,
         behaviour: RandomParticleBehaviour(

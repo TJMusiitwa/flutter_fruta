@@ -29,11 +29,21 @@ class _MenuScreenState extends State<MenuScreen> {
           largeTitle: Text('Menu'),
         ),
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          padding:
+              MediaQuery.of(context).removePadding(removeTop: true).padding,
           sliver: SliverFillRemaining(
               child: FutureBuilder(
             future: fetchSmoothieData(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting &&
+                  snapshot.data != null) {
+                return Center(
+                  child: CupertinoActivityIndicator(),
+                );
+              }
+              if (snapshot.hasError) {
+                print(snapshot.error.toString());
+              }
               var values = snapshot.data;
               final smoothie = smoothieFromJson(values.toString());
               return snapshot.hasData == null
@@ -62,11 +72,11 @@ class _MenuScreenState extends State<MenuScreen> {
                         },
                         separatorBuilder: (BuildContext context, int index) =>
                             Padding(
-                          padding: const EdgeInsets.only(left: 120.0),
+                          padding: const EdgeInsets.only(left: 10.0),
                           child: Container(
                             color:
                                 CupertinoColors.separator.darkHighContrastColor,
-                            height: 1,
+                            height: 0.5,
                           ),
                         ),
                       ),

@@ -1,13 +1,15 @@
 import 'dart:ui';
 
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Color, Colors;
+import 'package:flutter_fruta/widgets/cupertino_modal_transition.dart';
 
 import 'package:flutter_fruta/widgets/recipe_card.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:hive/hive.dart';
 
-class DrinkViewWidget extends StatelessWidget {
+var favBox = Hive.box('frutaFavourites');
+
+class DrinkViewWidget extends StatefulWidget {
   final String imagePath, drinkDesc, drinkName, drinkCalories;
 
   const DrinkViewWidget(
@@ -17,19 +19,45 @@ class DrinkViewWidget extends StatelessWidget {
       @required this.drinkName,
       @required this.drinkCalories})
       : super(key: key);
+
+  @override
+  _DrinkViewWidgetState createState() => _DrinkViewWidgetState();
+}
+
+class _DrinkViewWidgetState extends State<DrinkViewWidget> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         CupertinoSliverNavigationBar(
-          largeTitle: Text(drinkName),
+          largeTitle: Text(widget.drinkName),
           previousPageTitle: 'Menu',
           trailing: CupertinoButton(
-            onPressed: () {},
-            child: Icon(
-              CupertinoIcons.heart,
-              color: CupertinoTheme.of(context).primaryColor,
-            ),
+            onPressed: () {
+              setState(() {
+                if (favBox.containsKey(widget.drinkName)) {
+                  favBox.delete(widget.drinkName);
+                } else {
+                  favBox.put(widget.drinkName, {
+                    'name': widget.drinkName,
+                    'image': widget.imagePath,
+                    'calories': widget.drinkCalories,
+                    'desc': widget.drinkDesc
+                  });
+                }
+              });
+            },
+            child: favBox.containsKey(widget.drinkName)
+                ? Icon(
+                    CupertinoIcons.heart_solid,
+                    color: CupertinoTheme.of(context).primaryColor,
+                    size: 25,
+                  )
+                : Icon(
+                    CupertinoIcons.heart,
+                    color: CupertinoTheme.of(context).primaryColor,
+                    size: 25,
+                  ),
           ),
         ),
         SliverSafeArea(
@@ -51,9 +79,9 @@ class DrinkViewWidget extends StatelessWidget {
                           maxHeight: 450,
                           minWidth: MediaQuery.of(context).size.width),
                       child: Hero(
-                        tag: drinkName,
+                        tag: widget.drinkName,
                         child: Image.asset(
-                          imagePath,
+                          widget.imagePath,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -68,7 +96,7 @@ class DrinkViewWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text(
-                              drinkDesc,
+                              widget.drinkDesc,
                               style: CupertinoTheme.of(context)
                                   .textTheme
                                   .textStyle
@@ -78,7 +106,7 @@ class DrinkViewWidget extends StatelessWidget {
                                   ),
                             ),
                             Text(
-                              "$drinkCalories calories",
+                              "${widget.drinkCalories} calories",
                               maxLines: 1,
                               style: CupertinoTheme.of(context)
                                   .textTheme
@@ -131,22 +159,40 @@ class DrinkViewWidget extends StatelessWidget {
                     child: CupertinoButton.filled(
                       child: Text('Buy with Apple Pay'),
                       onPressed: () {
-                        showCupertinoModalBottomSheet(
-                          context: context,
-                          builder: (context, controller) => Container(
-                            child: new BackdropFilter(
-                              filter: new ImageFilter.blur(
-                                  sigmaX: 20.0, sigmaY: 20.0),
-                              child: new Container(
-                                decoration: new BoxDecoration(
-                                  color: Colors.white.withOpacity(0.0),
-                                  image: DecorationImage(
-                                      image: AssetImage(imagePath),
-                                      fit: BoxFit.cover),
-                                ),
-                              ),
-                            ),
-                          ),
+                        showGeneralDialog(
+                          barrierDismissible: true,
+                          barrierLabel: 'Your Order',
+                          context: this.context,
+                          //transitionDuration: const Duration(seconds: 1),
+                          transitionBuilder:
+                              (context, animation, secondaryAnimation, child) =>
+                                  CupertinoModalTransition(
+                                      animation: animation,
+                                      child: child,
+                                      behindChild: this.build(this.context)),
+                          pageBuilder: (context, animation,
+                                  secondaryAnimation) =>
+                              CupertinoFullscreenDialogTransition(
+                                  primaryRouteAnimation: animation,
+                                  secondaryRouteAnimation: secondaryAnimation,
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height /
+                                        1.2,
+                                    child: new BackdropFilter(
+                                      filter: new ImageFilter.blur(
+                                          sigmaX: 20.0, sigmaY: 20.0),
+                                      child: Container(
+                                        decoration: new BoxDecoration(
+                                          color: Colors.white.withOpacity(0.0),
+                                          image: DecorationImage(
+                                              image:
+                                                  AssetImage(widget.imagePath),
+                                              fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  linearTransition: true),
                         );
                       },
                     ),

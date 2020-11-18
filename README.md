@@ -1,16 +1,12 @@
-# flutter_fruta
+# Flutter Fruta
 
-A new Flutter project.
+[![Codemagic build status](https://api.codemagic.io/apps/5fb543084c483750193006d5/5fb543084c483750193006d4/status_badge.svg)](https://codemagic.io/apps/5fb543084c483750193006d5/5fb543084c483750193006d4/latest_build) 	   ![GitHub repo size](https://img.shields.io/github/repo-size/TJMusiitwa/flutter_fruta?style=plastic) ![Flutter Version](https://img.shields.io/badge/Flutter-1.22.2-blue?style=plastic) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/TJMusiitwa/flutter_fruta?style=plastic)  
 
-## Getting Started
+A Flutter project that attempts to recreate the SwiftUI 2020 sample project from WWDC 2020 using only Cupertino widgets.
 
-This project is a starting point for a Flutter application.
+## To-Do
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - [ ] Fix Rewards Screen
+ - [ ] Make Proper the modal screen with iOS 13 likeness
+ - [ ] Add Home widgets for iOS 14 support
+ - [ ] Make an AppClip???

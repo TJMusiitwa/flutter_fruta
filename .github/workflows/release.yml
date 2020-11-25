@@ -28,7 +28,7 @@ jobs:
     - run: flutter pub get
     
     - name: Build iOS App
-        run:|
+      run: |
           flutter build ios --profile --no-codesign
           cd build/ios/iphoneos
           mkdir Payload

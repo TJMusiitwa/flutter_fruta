@@ -6,7 +6,7 @@ A Flutter project that attempts to recreate the SwiftUI 2020 sample project from
 
 ## To-Do
 
- - [ ] Fix Rewards Screen
+ - [x] Fix Rewards Screen
  - [ ] Make Proper the modal screen with iOS 13 likeness
  - [ ] Add Home widgets for iOS 14 support
  - [ ] Make an AppClip???

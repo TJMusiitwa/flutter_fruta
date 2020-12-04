@@ -39,8 +39,7 @@ class MyApp extends StatelessWidget {
             switch (index) {
               case 0:
                 returnValue = CupertinoTabView(
-                  builder: (context) =>
-                      CupertinoPageScaffold(child: MenuScreen()),
+                  builder: (context) => MenuScreen(),
                 );
                 break;
               case 1:

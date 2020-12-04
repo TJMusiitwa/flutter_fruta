@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Color, Colors;
-import 'package:flutter_fruta/widgets/cupertino_modal_transition.dart';
 
 import 'package:flutter_fruta/widgets/recipe_card.dart';
 import 'package:hive/hive.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 var favBox = Hive.box('frutaFavourites');
 
@@ -159,40 +159,19 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                     child: CupertinoButton.filled(
                       child: Text('Buy with Apple Pay'),
                       onPressed: () {
-                        showGeneralDialog(
-                          barrierDismissible: true,
-                          barrierLabel: 'Your Order',
-                          context: this.context,
-                          //transitionDuration: const Duration(seconds: 1),
-                          transitionBuilder:
-                              (context, animation, secondaryAnimation, child) =>
-                                  CupertinoModalTransition(
-                                      animation: animation,
-                                      child: child,
-                                      behindChild: this.build(this.context)),
-                          pageBuilder: (context, animation,
-                                  secondaryAnimation) =>
-                              CupertinoFullscreenDialogTransition(
-                                  primaryRouteAnimation: animation,
-                                  secondaryRouteAnimation: secondaryAnimation,
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height /
-                                        1.2,
-                                    child: new BackdropFilter(
-                                      filter: new ImageFilter.blur(
-                                          sigmaX: 20.0, sigmaY: 20.0),
-                                      child: Container(
-                                        decoration: new BoxDecoration(
-                                          color: Colors.white.withOpacity(0.0),
-                                          image: DecorationImage(
-                                              image:
-                                                  AssetImage(widget.imagePath),
-                                              fit: BoxFit.cover),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  linearTransition: true),
+                        showCupertinoModalBottomSheet(
+                          context: context,
+                          expand: true,
+                          backgroundColor: CupertinoColors.black,
+                          builder: (_, __) => Container(
+                            //height: MediaQuery.of(context).size.height / 1.4,
+                            decoration: new BoxDecoration(
+                              color: Colors.white.withOpacity(0.0),
+                              image: DecorationImage(
+                                  image: AssetImage(widget.imagePath),
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
                         );
                       },
                     ),

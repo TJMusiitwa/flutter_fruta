@@ -13,78 +13,88 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
-    fetchSmoothieData();
+    _fetchSmoothieData();
   }
 
-  Future<void> fetchSmoothieData() async {
-    return DefaultAssetBundle.of(context)
+  Future<void> _fetchSmoothieData() async {
+    return await DefaultAssetBundle.of(context)
         .loadString("assets/smoothie_data.json");
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        CupertinoSliverNavigationBar(
-          largeTitle: Text('Menu'),
-        ),
-        SliverPadding(
-          padding:
-              MediaQuery.of(context).removePadding(removeTop: true).padding,
-          sliver: SliverFillRemaining(
-              child: FutureBuilder(
-            future: fetchSmoothieData(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting &&
-                  snapshot.data != null) {
-                return Center(
-                  child: CupertinoActivityIndicator(),
-                );
-              }
-              if (snapshot.hasError) {
-                print(snapshot.error.toString());
-              }
-              var values = snapshot.data;
-              final smoothie = smoothieFromJson(values.toString());
-              return snapshot.hasData == null
-                  ? CupertinoActivityIndicator()
-                  : CupertinoScrollbar(
-                      child: ListView.separated(
-                        itemCount: smoothie.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          var smoothieItem = smoothie[index];
-                          return MenuListTile(
-                            drinkName: smoothieItem.smoothieName,
-                            imagePath: smoothieItem.imagePath,
-                            drinkCalories: smoothieItem.calories.toString(),
-                            onTap: () => Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                  builder: (context) => DrinkViewWidget(
-                                        imagePath: smoothieItem.imagePath,
-                                        drinkDesc: smoothieItem.description,
-                                        drinkName: smoothieItem.smoothieName,
-                                        drinkCalories:
-                                            smoothieItem.calories.toString(),
-                                      )),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) =>
-                            Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: Container(
-                            color:
-                                CupertinoColors.separator.darkHighContrastColor,
-                            height: 0.5,
-                          ),
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text('Menu'),
+          ),
+        ];
+      },
+      body: FutureBuilder(
+        future: _fetchSmoothieData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting &&
+              snapshot.data != null) {
+            return Center(
+              child: CupertinoActivityIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            print(snapshot.error.toString());
+          }
+
+          if (snapshot.data == null) {
+            return Center(
+              child: CupertinoActivityIndicator(),
+            );
+          }
+          //var values = snapshot.data;
+          final smoothie = smoothieFromJson(snapshot.data.toString());
+
+          return snapshot.hasData == null
+              ? Center(
+                  child: Text('There are no smoothies to show'),
+                )
+              : CupertinoScrollbar(
+                  child: ListView.separated(
+                    itemCount: smoothie.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      var smoothieItem = smoothie[index];
+                      //var ingItem = smoothieItem.ingredients.indexOf(index)
+
+                      return MenuListTile(
+                        drinkName: smoothieItem.smoothieName,
+                        imagePath: smoothieItem.imagePath,
+                        drinkCalories: smoothieItem.calories.toString(),
+                        // ingredients: smoothieItem
+                        //     .ingredients[0].localizedFoodItemNames.en
+                        //     .toString(),
+                        onTap: () => Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => DrinkViewWidget(
+                                    imagePath: smoothieItem.imagePath,
+                                    drinkDesc: smoothieItem.description,
+                                    drinkName: smoothieItem.smoothieName,
+                                    drinkCalories:
+                                        smoothieItem.calories.toString(),
+                                  )),
                         ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Container(
+                        color: CupertinoColors.separator.darkHighContrastColor,
+                        height: 0.5,
                       ),
-                    );
-            },
-          )),
-        ),
-      ],
+                    ),
+                  ),
+                );
+        },
+      ),
     );
   }
 }

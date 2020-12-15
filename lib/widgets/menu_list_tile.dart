@@ -2,11 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
 class MenuListTile extends StatelessWidget {
-  final String imagePath, drinkName, drinkCalories;
+  final String imagePath, drinkName, drinkCalories, ingredients;
   final VoidCallback onTap;
 
   const MenuListTile(
-      {Key key, this.imagePath, this.drinkName, this.drinkCalories, this.onTap})
+      {Key key,
+      this.imagePath,
+      this.drinkName,
+      this.drinkCalories,
+      this.onTap,
+      this.ingredients})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -50,6 +55,13 @@ class MenuListTile extends StatelessWidget {
                           .navTitleTextStyle
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
+                    // Text(
+                    //   ingredients,
+                    //   style: CupertinoTheme.of(context)
+                    //       .textTheme
+                    //       .textStyle
+                    //       .copyWith(fontWeight: FontWeight.w500),
+                    // ),
                     Text(
                       "$drinkCalories calories",
                       maxLines: 1,

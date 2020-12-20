@@ -31,7 +31,6 @@ dependencies:
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   modal_bottom_sheet: ^0.2.2
-  we_slide: ^1.0.3
 
 dev_dependencies:
   flutter_test:

@@ -40,15 +40,15 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return PhysicalModel(
       color: CupertinoColors.lightBackgroundGray,
-      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      borderRadius: const BorderRadius.all(Radius.circular(20)),
       shadowColor: CupertinoColors.black,
-      elevation: 2,
+      elevation: 15,
       child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         child: Stack(
           children: [
             Container(
-              height: 300,
+              height: 250,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover, image: AssetImage(imagePath))),

@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 class FavouritesBottomWidget extends StatelessWidget {
-  final String name, calories, imagePath, desc;
+  final String name, calories, imagePath, desc, ing;
 
   const FavouritesBottomWidget(
-      {Key key, this.imagePath, this.name, this.calories, this.desc})
+      {Key key, this.imagePath, this.name, this.calories, this.desc, this.ing})
       : super(key: key);
 
   @override
@@ -82,6 +82,15 @@ class FavouritesBottomWidget extends StatelessWidget {
                 ],
               ),
               //SizedBox(height: 7.0),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                width: MediaQuery.of(context).size.width,
+                child: Text("Ingredients: $ing",
+                    softWrap: true,
+                    textAlign: TextAlign.start,
+                    style: CupertinoTheme.of(context).textTheme.textStyle),
+              ),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 7),

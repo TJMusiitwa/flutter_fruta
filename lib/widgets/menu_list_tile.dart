@@ -55,13 +55,13 @@ class MenuListTile extends StatelessWidget {
                           .navTitleTextStyle
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    // Text(
-                    //   ingredients,
-                    //   style: CupertinoTheme.of(context)
-                    //       .textTheme
-                    //       .textStyle
-                    //       .copyWith(fontWeight: FontWeight.w500),
-                    // ),
+                    Text(
+                      ingredients,
+                      style: CupertinoTheme.of(context)
+                          .textTheme
+                          .textStyle
+                          .copyWith(fontWeight: FontWeight.w500),
+                    ),
                     Text(
                       "$drinkCalories calories",
                       maxLines: 1,

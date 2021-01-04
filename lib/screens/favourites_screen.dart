@@ -36,6 +36,7 @@ class FavouritesScreen extends StatelessWidget {
                   drinkName: favItem[index]['name'],
                   imagePath: favItem[index]['image'],
                   drinkCalories: favItem[index]['calories'].toString(),
+                  ingredients: favItem[index]['ingredients'].toString(),
                   onTap: () => showCupertinoModalBottomSheet(
                       context: context,
                       builder: (context, controller) {
@@ -46,6 +47,7 @@ class FavouritesScreen extends StatelessWidget {
                             imagePath: favItem[index]['image'],
                             desc: favItem[index]['desc'],
                             calories: favItem[index]['calories'].toString(),
+                            ing: favItem[index]['ingredients'],
                           ),
                         );
                       }));

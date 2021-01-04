@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_fruta/model/smoothie_model.dart';
 
 import 'package:flutter_fruta/widgets/recipe_card.dart';
 import 'package:hive/hive.dart';
@@ -9,14 +11,15 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 var favBox = Hive.box('frutaFavourites');
 
 class DrinkViewWidget extends StatefulWidget {
-  final String imagePath, drinkDesc, drinkName, drinkCalories;
+  final String imagePath, drinkDesc, drinkName, drinkCalories, ingredients;
 
   const DrinkViewWidget(
       {Key key,
       @required this.imagePath,
       @required this.drinkDesc,
       @required this.drinkName,
-      @required this.drinkCalories})
+      @required this.drinkCalories,
+      this.ingredients})
       : super(key: key);
 
   @override
@@ -24,6 +27,17 @@ class DrinkViewWidget extends StatefulWidget {
 }
 
 class _DrinkViewWidgetState extends State<DrinkViewWidget> {
+  @override
+  void initState() {
+    super.initState();
+    _fetchIngredientsData();
+  }
+
+  Future<void> _fetchIngredientsData() async {
+    return await DefaultAssetBundle.of(context)
+        .loadString("assets/smoothie_data.json");
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -41,7 +55,8 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                     'name': widget.drinkName,
                     'image': widget.imagePath,
                     'calories': widget.drinkCalories,
-                    'desc': widget.drinkDesc
+                    'desc': widget.drinkDesc,
+                    'ingredients': widget.ingredients
                   });
                 }
               });
@@ -135,17 +150,35 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                     SizedBox(
                       height: 15,
                     ),
-                    // GridView.builder(
-                    //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    //       crossAxisCount: 2,
-                    //       mainAxisSpacing: 5,
-                    //     ),
-                    //     itemBuilder: (context, index) {
-                    //       return CupertinoPopupSurface(
-                    //         isSurfacePainted: false,
-                    //         child: FlipCard(front: null, back: null),
-                    //       );
-                    //     })
+                    // FutureBuilder(
+                    //   future: _fetchIngredientsData(),
+                    //   builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    //     final ingredients =
+                    //         ingredientsFromJson(snapshot.data.toString());
+                    //     return GridView.builder(
+                    //         gridDelegate:
+                    //             SliverGridDelegateWithFixedCrossAxisCount(
+                    //           crossAxisCount: 2,
+                    //           mainAxisSpacing: 5,
+                    //         ),
+                    //         itemCount: ingredients.length,
+                    //         itemBuilder: (context, index) {
+                    //           var singleIngredient = ingredients[index];
+                    //           return CupertinoPopupSurface(
+                    //             isSurfacePainted: false,
+                    //             child: FlipCard(
+                    //                 front: Container(
+                    //                   decoration: BoxDecoration(
+                    //                       image: DecorationImage(
+                    //                           image: AssetImage(
+                    //                               'assets/ingredients/${singleIngredient.identifier}.jpg'),
+                    //                           fit: BoxFit.cover)),
+                    //                 ),
+                    //                 back: null),
+                    //           );
+                    //         });
+                    //   },
+                    // ),
                   ],
                 ),
               ),

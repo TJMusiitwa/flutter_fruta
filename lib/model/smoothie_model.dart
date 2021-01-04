@@ -7,6 +7,9 @@ import 'dart:convert';
 List<Smoothie> smoothieFromJson(String str) =>
     List<Smoothie>.from(json.decode(str).map((x) => Smoothie.fromJson(x)));
 
+List<Ingredient> ingredientsFromJson(String str) =>
+    List<Ingredient>.from(json.decode(str).map((x) => Ingredient.fromJson(x)));
+
 String smoothieToJson(List<Smoothie> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 

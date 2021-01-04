@@ -15,7 +15,7 @@ The smoothie images used for this project are sourced from Unsplash and covered 
  ## Screenshots
 |Home Screen  |Menu Details  |
 |--|--|
-|  |  |
+|| |
 
 |Rewards Screen|Recipes Screen  |
 |--|--|

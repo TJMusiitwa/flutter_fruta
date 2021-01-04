@@ -1,5 +1,3 @@
-import 'dart:convert' show json;
-
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_fruta/model/smoothie_model.dart';
@@ -22,9 +20,6 @@ class _MenuScreenState extends State<MenuScreen> {
     return await DefaultAssetBundle.of(context)
         .loadString("assets/smoothie_data.json");
   }
-
-  List<Ingredient> ingredientsFromJson(String str) => List<Ingredient>.from(
-      json.decode(str).map((x) => Ingredient.fromJson(x)));
 
   @override
   Widget build(BuildContext context) {
@@ -66,17 +61,16 @@ class _MenuScreenState extends State<MenuScreen> {
                     itemCount: smoothie.length,
                     itemBuilder: (BuildContext context, int index) {
                       var smoothieItem = smoothie[index];
-                      //var ingItem = smoothieItem.ingredients['name'];
-                      //var ingLength = smoothieItem.ingredients.length;
-                      // for (var i = 0; i < smoothieItem.ingredients.length; i++) {
-
-                      //   }
+                      var _ingredients = [
+                        for (final i in smoothieItem.ingredients)
+                          i.localizedFoodItemNames.en
+                      ].join(', ');
 
                       return MenuListTile(
                         drinkName: smoothieItem.smoothieName,
                         imagePath: smoothieItem.imagePath,
                         drinkCalories: smoothieItem.calories.toString(),
-                        ingredients: "",
+                        ingredients: _ingredients,
                         onTap: () => Navigator.push(
                           context,
                           CupertinoPageRoute(
@@ -86,6 +80,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     drinkName: smoothieItem.smoothieName,
                                     drinkCalories:
                                         smoothieItem.calories.toString(),
+                                    ingredients: _ingredients,
                                   )),
                         ),
                       );

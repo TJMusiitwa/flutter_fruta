@@ -64,6 +64,7 @@ class RecipesScreen extends StatelessWidget {
                               imagePath: favItem[index]['image'],
                               drinkCalories:
                                   favItem[index]['calories'].toString(),
+                              ingredients: favItem[index]['ingredients'],
                               onTap: () => Navigator.push(
                                 context,
                                 CupertinoPageRoute(

@@ -60,7 +60,7 @@ class MenuListTile extends StatelessWidget {
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .textStyle
-                          .copyWith(fontWeight: FontWeight.w500),
+                          .copyWith(fontWeight: FontWeight.w400),
                     ),
                     Text(
                       "$drinkCalories calories",

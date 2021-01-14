@@ -22,7 +22,7 @@ class FavouritesScreen extends StatelessWidget {
             return Align(
               alignment: Alignment.center,
               child: Text(
-                'Add some smoothies to your favourites',
+                '❤️ some smoothies to see them appear here',
                 style: CupertinoTheme.of(context).textTheme.textStyle,
               ),
             );

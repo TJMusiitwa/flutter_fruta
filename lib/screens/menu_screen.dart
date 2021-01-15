@@ -49,7 +49,7 @@ class _MenuScreenState extends State<MenuScreen> {
               child: CupertinoActivityIndicator(),
             );
           }
-          //var values = snapshot.data;
+
           final smoothie = smoothieFromJson(snapshot.data.toString());
 
           return snapshot.hasData == null
@@ -75,12 +75,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           context,
                           CupertinoPageRoute(
                               builder: (context) => DrinkViewWidget(
-                                    imagePath: smoothieItem.imagePath,
-                                    drinkDesc: smoothieItem.description,
                                     drinkName: smoothieItem.smoothieName,
-                                    drinkCalories:
-                                        smoothieItem.calories.toString(),
-                                    ingredients: _ingredients,
                                   )),
                         ),
                       );

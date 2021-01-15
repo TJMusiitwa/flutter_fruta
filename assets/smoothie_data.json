@@ -7,7 +7,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "blueberry",
+                "identifier": "blueberries",
                 "localizedFoodItemNames": {
                     "en": "Blueberry",
                     "de": "Blaubeere",
@@ -170,28 +170,28 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "spinach",
+                "identifier": "lemon",
                 "localizedFoodItemNames": {
-                    "en": "Spinach",
-                    "de": "Spinat",
-                    "pt": "Espinafre"
+                    "en": "Lemon",
+                    "de": "Zitrone",
+                    "pt": "Limão"
                 },
-                "referenceMass": "30 g",
-                "density": "30 g per 1 cup",
-                "totalSaturatedFat": "0 g",
+                "referenceMass": "212 g",
+                "density": "212 g per 1 cup",
+                "totalSaturatedFat": "0.1 g",
                 "totalMonounsaturatedFat": "0 g",
-                "totalPolyunsaturatedFat": "0 g",
+                "totalPolyunsaturatedFat": "0.2 g",
                 "cholesterol": "0 g",
-                "sodium": "24 mg",
-                "totalCarbohydrates": "1.1 g",
-                "dietaryFiber": "0.7 g",
-                "sugar": "0.1 g",
-                "protein": "0.9 g",
-                "calcium": "29.7 mg",
-                "potassium": "355 mg",
-                "vitaminA": "1.67 mg",
-                "vitaminC": "8.43 mg",
-                "iron": "0.813 mg"
+                "sodium": "4 mg",
+                "totalCarbohydrates": "20 g",
+                "dietaryFiber": "6 g",
+                "sugar": "5 g",
+                "protein": "2.3 g",
+                "calcium": "55.1 mg",
+                "potassium": "293 mg",
+                "vitaminA": "0.028 mg",
+                "vitaminC": "112 mg",
+                "iron": "1.27 mg"
             },
             {
                 "identifier": "spinach",
@@ -275,7 +275,7 @@
                 "iron": "0.412 mg"
             },
             {
-                "identifier": "almond-milk",
+                "identifier": "almondmilk",
                 "localizedFoodItemNames": {
                     "en": "Almond Milk",
                     "de": "Mandelmilch",
@@ -437,7 +437,7 @@
                 "iron": "0.951 mg"
             },
             {
-                "identifier": "raspberry",
+                "identifier": "raspberries",
                 "localizedFoodItemNames": {
                     "en": "Raspberry",
                     "de": "Himbeere",
@@ -494,7 +494,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "blueberry",
+                "identifier": "blueberries",
                 "localizedFoodItemNames": {
                     "en": "Blueberry",
                     "de": "Blaubeere",
@@ -542,7 +542,7 @@
                 "iron": "0.951 mg"
             },
             {
-                "identifier": "raspberry",
+                "identifier": "raspberries",
                 "localizedFoodItemNames": {
                     "en": "Raspberry",
                     "de": "Himbeere",
@@ -632,7 +632,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "raspberry",
+                "identifier": "raspberries",
                 "localizedFoodItemNames": {
                     "en": "Raspberry",
                     "de": "Himbeere",
@@ -713,7 +713,7 @@
                 "iron": "6 mg"
             },
             {
-                "identifier": "almond-milk",
+                "identifier": "almondmilk",
                 "localizedFoodItemNames": {
                     "en": "Almond Milk",
                     "de": "Mandelmilch",
@@ -737,7 +737,7 @@
                 "iron": "1 mg"
             },
             {
-                "identifier": "peanut-butter",
+                "identifier": "peanutbutter",
                 "localizedFoodItemNames": {
                     "en": "Peanut Butter",
                     "de": "Erdnusbutter",
@@ -932,7 +932,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "almond-milk",
+                "identifier": "almondmilk",
                 "localizedFoodItemNames": {
                     "en": "Almond Milk",
                     "de": "Mandelmilch",
@@ -1013,7 +1013,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "almond-milk",
+                "identifier": "almondmilk",
                 "localizedFoodItemNames": {
                     "en": "Almond Milk",
                     "de": "Mandelmilch",
@@ -1094,7 +1094,7 @@
         "isFavourite": false,
         "ingredients": [
             {
-                "identifier": "blueberry",
+                "identifier": "blueberries",
                 "localizedFoodItemNames": {
                     "en": "Blueberry",
                     "de": "Blaubeere",
@@ -1118,7 +1118,7 @@
                 "iron": "0.585 mg"
             },
             {
-                "identifier": "almond-milk",
+                "identifier": "almondmilk",
                 "localizedFoodItemNames": {
                     "en": "Almond Milk",
                     "de": "Mandelmilch",

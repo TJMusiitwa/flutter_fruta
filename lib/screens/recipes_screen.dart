@@ -35,11 +35,7 @@ class RecipesScreen extends StatelessWidget {
                       height: 0.5,
                     ),
                   ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width,
-                      maxHeight: MediaQuery.of(context).size.height / 4,
-                    ),
+                  Expanded(
                     child: ValueListenableBuilder(
                       valueListenable: Hive.box('frutaFavourites').listenable(),
                       builder: (context, box, child) {
@@ -55,6 +51,7 @@ class RecipesScreen extends StatelessWidget {
                           );
                         }
                         return ListView.separated(
+                          shrinkWrap: true,
                           itemCount: box.length,
                           physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {

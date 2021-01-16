@@ -32,6 +32,7 @@ class MenuListTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: Hero(
                 tag: drinkName,
+                transitionOnUserGestures: true,
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,

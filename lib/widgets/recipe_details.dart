@@ -50,6 +50,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 Center(
                   child: Hero(
                     tag: widget.drinkName,
+                    transitionOnUserGestures: true,
                     child: Container(
                       height: 300,
                       width: 368,

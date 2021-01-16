@@ -112,6 +112,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                   minWidth: MediaQuery.of(context).size.width),
                               child: Hero(
                                 tag: widget.drinkName,
+                                transitionOnUserGestures: true,
                                 child: Image.asset(
                                   smoothieDetails.imagePath,
                                   fit: BoxFit.cover,
@@ -120,7 +121,11 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  color: CupertinoColors.systemGrey6),
+                                  color: MediaQuery.platformBrightnessOf(
+                                              context) ==
+                                          Brightness.dark
+                                      ? CupertinoColors.systemGrey6.darkColor
+                                      : CupertinoColors.systemGrey6),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -191,163 +196,31 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                         showCupertinoDialog(
                                           context: context,
                                           useRootNavigator: false,
-                                          builder: (_) => Center(
-                                            child: CupertinoPopupSurface(
-                                              isSurfacePainted: true,
+                                          builder: (_) => CupertinoPopupSurface(
+                                            isSurfacePainted: true,
+                                            child: Center(
                                               child: Container(
                                                 height: 500,
                                                 width: 400,
                                                 child: FlipCard(
-                                                  flipOnTouch: true,
-                                                  front: Stack(
-                                                    alignment: Alignment.center,
-                                                    children: [
-                                                      Positioned.fill(
-                                                        child: Hero(
-                                                          tag: singleIngredient
-                                                              .identifier,
-                                                          child: Image.asset(
-                                                              'assets/ingredients/${singleIngredient.identifier}.jpg',
-                                                              fit:
-                                                                  BoxFit.cover),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                          top: 6,
-                                                          right: 6,
-                                                          child: CupertinoButton(
-                                                              child: Icon(
-                                                                  CupertinoIcons
-                                                                      .clear_circled_solid,
-                                                                  size: 40,
-                                                                  color: CupertinoColors
-                                                                      .inactiveGray
-                                                                      .withOpacity(
-                                                                          0.7)),
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      context))),
-                                                      Positioned(
-                                                        bottom: 6,
-                                                        right: 6,
-                                                        child: CupertinoButton(
-                                                          child: Icon(
-                                                              CupertinoIcons
-                                                                  .info_circle_fill,
-                                                              size: 40,
-                                                              color: CupertinoColors
-                                                                  .inactiveGray
-                                                                  .withOpacity(
-                                                                      0.7)),
-                                                          //TODO: Fix the toggle card button => https://pub.dev/packages/flip_card
-                                                          onPressed: () =>
-                                                              cardKey
-                                                                  .currentState
-                                                                  .toggleCard(),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        singleIngredient
-                                                            .localizedFoodItemNames
-                                                            .en
-                                                            .toUpperCase(),
-                                                        textScaleFactor: 1.5,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        softWrap: true,
-                                                        style: CupertinoTheme
-                                                                .of(context)
-                                                            .textTheme
-                                                            .textStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 40,
-                                                                foreground:
-                                                                    Paint()
-                                                                      ..blendMode =
-                                                                          BlendMode
-                                                                              .softLight
-                                                                      ..color =
-                                                                          CupertinoColors
-                                                                              .black),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  //TODO: For back Stack and blur the background before laying on nutrition information
-                                                  back: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Nutrition Facts',
-                                                        style:
-                                                            CupertinoTheme.of(
-                                                                    context)
-                                                                .textTheme
-                                                                .textStyle,
-                                                      ),
-                                                      Text(
-                                                          'Serving Size 1 Cup'),
-                                                      SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                      Text('112 calories')
-                                                    ],
-                                                  ),
+                                                  key: cardKey,
+                                                  flipOnTouch: false,
+                                                  front: FrontIngredientCard(
+                                                      singleIngredient:
+                                                          singleIngredient,
+                                                      cardKey: cardKey),
+                                                  back: BackIngredientCard(
+                                                      singleIngredient:
+                                                          singleIngredient,
+                                                      cardKey: cardKey),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         );
                                       },
-                                      child: Container(
-                                        height: 180,
-                                        width: 180,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                        ),
-                                        child: Stack(
-                                          alignment: Alignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(16),
-                                              child: Hero(
-                                                tag:
-                                                    singleIngredient.identifier,
-                                                child: Image.asset(
-                                                    'assets/ingredients/${singleIngredient.identifier}.jpg',
-                                                    fit: BoxFit.cover),
-                                              ),
-                                            ),
-                                            Text(
-                                              singleIngredient
-                                                  .localizedFoodItemNames.en
-                                                  .toUpperCase(),
-                                              textScaleFactor: 0.8,
-                                              textAlign: TextAlign.center,
-                                              softWrap: true,
-                                              style: CupertinoTheme.of(context)
-                                                  .textTheme
-                                                  .textStyle
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 40,
-                                                      foreground: Paint()
-                                                        ..blendMode =
-                                                            BlendMode.softLight
-                                                        ..color =
-                                                            CupertinoColors
-                                                                .black),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                      child: IngredientGridItem(
+                                          singleIngredient: singleIngredient),
                                     );
                                   }),
                             ),
@@ -386,6 +259,346 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                 ],
               );
       },
+    );
+  }
+}
+
+class IngredientGridItem extends StatelessWidget {
+  const IngredientGridItem({
+    Key key,
+    @required this.singleIngredient,
+  }) : super(key: key);
+
+  final Ingredient singleIngredient;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 180,
+      width: 180,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Hero(
+              tag: singleIngredient.identifier,
+              child: Image.asset(
+                  'assets/ingredients/${singleIngredient.identifier}.jpg',
+                  fit: BoxFit.cover),
+            ),
+          ),
+          Text(
+            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
+            textScaleFactor: 0.8,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                foreground: Paint()
+                  ..blendMode = BlendMode.softLight
+                  ..color = CupertinoColors.black),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class BackIngredientCard extends StatelessWidget {
+  const BackIngredientCard({
+    Key key,
+    @required this.singleIngredient,
+    @required this.cardKey,
+  }) : super(key: key);
+
+  final Ingredient singleIngredient;
+  final GlobalKey<FlipCardState> cardKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Image.asset(
+                'assets/ingredients/${singleIngredient.identifier}.jpg',
+                fit: BoxFit.cover,
+                height: 500,
+                width: 400,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Nutrition Facts',
+                  style: CupertinoTheme.of(context)
+                      .textTheme
+                      .navTitleTextStyle
+                      .copyWith(fontSize: 35),
+                ),
+                Text(
+                  'Serving Size 1 Cup',
+                  style: CupertinoTheme.of(context)
+                      .textTheme
+                      .textStyle
+                      .copyWith(fontSize: 15),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  '112 calories',
+                  style: CupertinoTheme.of(context)
+                      .textTheme
+                      .textStyle
+                      .copyWith(fontSize: 20, fontWeight: FontWeight.w400),
+                ),
+                Container(
+                  height: 1,
+                  color: CupertinoColors.separator,
+                ),
+                NutritionFactsList(singleIngredient: singleIngredient),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Container(
+              height: 70,
+              //color: Color(0xfffff). //Color(0x90ffffff),
+              child: Row(
+                children: [
+                  Spacer(),
+                  CupertinoButton(
+                    child: Icon(CupertinoIcons.arrow_left_circle_fill,
+                        size: 40,
+                        color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+                    onPressed: () => cardKey.currentState.toggleCard(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FrontIngredientCard extends StatelessWidget {
+  const FrontIngredientCard({
+    Key key,
+    @required this.singleIngredient,
+    @required this.cardKey,
+  }) : super(key: key);
+
+  final Ingredient singleIngredient;
+  final GlobalKey<FlipCardState> cardKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned.fill(
+            child: Hero(
+              tag: singleIngredient.identifier,
+              child: Image.asset(
+                  'assets/ingredients/${singleIngredient.identifier}.jpg',
+                  fit: BoxFit.cover),
+            ),
+          ),
+          Positioned(
+              top: 6,
+              right: 6,
+              child: CupertinoButton(
+                  child: Icon(CupertinoIcons.clear_circled_solid,
+                      size: 40,
+                      color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+                  onPressed: () => Navigator.pop(context))),
+          Positioned(
+            bottom: 6,
+            right: 6,
+            child: CupertinoButton(
+              child: Icon(CupertinoIcons.info_circle_fill,
+                  size: 40,
+                  color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+              onPressed: () => cardKey.currentState.toggleCard(),
+            ),
+          ),
+          Text(
+            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
+            textScaleFactor: 1.5,
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                foreground: Paint()
+                  ..blendMode = BlendMode.softLight
+                  ..color = CupertinoColors.black),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NutritionFactsList extends StatelessWidget {
+  const NutritionFactsList({
+    Key key,
+    @required this.singleIngredient,
+  }) : super(key: key);
+
+  final Ingredient singleIngredient;
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoScrollbar(
+      child: ListView(
+        padding: EdgeInsets.only(left: 5, right: 5),
+        shrinkWrap: true,
+        children: [
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Total Fat',
+            nutritionQty: singleIngredient.totalSaturatedFat,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            nutritionFact: 'Total Saturated Fat',
+            nutritionQty: singleIngredient.totalSaturatedFat,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            nutritionFact: 'Total Monounsaturated Fat',
+            nutritionQty: singleIngredient.totalMonounsaturatedFat,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            nutritionFact: 'Total Polyunsaturated Fat',
+            nutritionQty: singleIngredient.totalPolyunsaturatedFat,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Cholestral',
+            nutritionQty: singleIngredient.cholesterol,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Sodium',
+            nutritionQty: singleIngredient.sodium,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Total Carbohydrates',
+            nutritionQty: singleIngredient.totalCarbohydrates,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            nutritionFact: 'Dietary Fiber',
+            nutritionQty: singleIngredient.dietaryFiber,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            nutritionFact: 'Sugar',
+            nutritionQty: singleIngredient.sugar,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Protein',
+            nutritionQty: singleIngredient.protein,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Calcium',
+            nutritionQty: singleIngredient.calcium,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Potassium',
+            nutritionQty: singleIngredient.potassium,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Vitamin A',
+            nutritionQty: singleIngredient.vitaminA,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Vitamin C',
+            nutritionQty: singleIngredient.vitaminC,
+          ),
+          NutritionSeparator(),
+          NutritionRow(
+            leftMargin: EdgeInsets.zero,
+            nutritionFact: 'Iron',
+            nutritionQty: singleIngredient.iron,
+          ),
+          NutritionSeparator(),
+        ],
+      ),
+    );
+  }
+}
+
+class NutritionRow extends StatelessWidget {
+  final String nutritionFact, nutritionQty;
+  final EdgeInsets leftMargin;
+  const NutritionRow({
+    Key key,
+    @required this.nutritionFact,
+    @required this.nutritionQty,
+    this.leftMargin = const EdgeInsets.only(left: 16),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(2),
+      margin: leftMargin,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text(nutritionFact), Text(nutritionQty)],
+      ),
+    );
+  }
+}
+
+class NutritionSeparator extends StatelessWidget {
+  const NutritionSeparator({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 0.5,
+      color: CupertinoColors.separator,
     );
   }
 }

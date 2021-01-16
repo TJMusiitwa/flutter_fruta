@@ -1,9 +1,13 @@
-name: FrutaiOSReleaseBuild
+# This is a basic workflow to help you get started with Actions
+
+name: FrutaiOSProfileBuild
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -23,9 +27,9 @@ jobs:
         channel: 'stable'
     - run: flutter pub get
     
-    - name: Build iOS App with Release Mode
+    - name: Build iOS App
       run: |
-          flutter build ios --release --no-codesign
+          flutter build ios --profile --no-codesign
           cd build/ios/iphoneos
           mkdir Payload
           cd Payload
@@ -36,5 +40,5 @@ jobs:
     # Upload generated ipa to the artifacts.
     - uses: actions/upload-artifact@v2
       with:
-        name: release-ipa
+        name: profile-ipa
         path: build/ios/iphoneos/app.ipa 

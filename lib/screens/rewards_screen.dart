@@ -16,6 +16,18 @@ class _RewardsScreenState extends State<RewardsScreen>
           ? CupertinoColors.systemIndigo
           : Color.fromRGBO(177, 159, 219, 0.4),
       child: AnimatedBackground(
+        vsync: this,
+        behaviour: RandomParticleBehaviour(
+          options: ParticleOptions(
+            particleCount: 10,
+            spawnMinSpeed: 4,
+            spawnMaxSpeed: 5,
+            spawnMaxRadius: 100,
+            maxOpacity: 0.40,
+            spawnOpacity: 0.3,
+            baseColor: Color.fromRGBO(177, 159, 219, 1),
+          ),
+        ),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,13 +55,13 @@ class _RewardsScreenState extends State<RewardsScreen>
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            child: RewardCircles(),
                             height: 65,
                             width: double.maxFinite,
+                            child: RewardCircles(),
                           ),
                           SizedBox(
-                            child: RewardCircles(),
                             height: 65,
+                            child: RewardCircles(),
                           )
                         ],
                       ),
@@ -58,7 +70,7 @@ class _RewardsScreenState extends State<RewardsScreen>
               Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 10, top: 5),
                 child: Text(
-                  "You are 10 points away from a free \nsmoothie!",
+                  'You are 10 points away from a free \nsmoothie!',
                   textAlign: TextAlign.center,
                   softWrap: true,
                   style: CupertinoTheme.of(context)
@@ -68,18 +80,6 @@ class _RewardsScreenState extends State<RewardsScreen>
                 ),
               )
             ],
-          ),
-        ),
-        vsync: this,
-        behaviour: RandomParticleBehaviour(
-          options: ParticleOptions(
-            particleCount: 10,
-            spawnMinSpeed: 4,
-            spawnMaxSpeed: 5,
-            spawnMaxRadius: 100,
-            maxOpacity: 0.40,
-            spawnOpacity: 0.3,
-            baseColor: Color.fromRGBO(177, 159, 219, 1),
           ),
         ),
       ),

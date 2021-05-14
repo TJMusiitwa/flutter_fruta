@@ -38,7 +38,7 @@ class RecipesScreen extends StatelessWidget {
                   Expanded(
                     child: ValueListenableBuilder(
                       valueListenable: Hive.box('frutaFavourites').listenable(),
-                      builder: (context, box, child) {
+                      builder: (context, dynamic box, child) {
                         if (box.isEmpty) {
                           return Align(
                             alignment: Alignment.center,

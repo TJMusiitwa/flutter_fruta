@@ -4,9 +4,9 @@ import 'package:hive/hive.dart';
 var favBox = Hive.box('frutaFavourites');
 
 class RecipeDetails extends StatefulWidget {
-  final String imagePath, drinkName;
+  final String? imagePath, drinkName;
 
-  const RecipeDetails({Key key, this.imagePath, this.drinkName})
+  const RecipeDetails({Key? key, this.imagePath, this.drinkName})
       : super(key: key);
   @override
   _RecipeDetailsState createState() => _RecipeDetailsState();
@@ -18,7 +18,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     return CustomScrollView(
       slivers: <Widget>[
         CupertinoSliverNavigationBar(
-          largeTitle: Text(widget.drinkName),
+          largeTitle: Text(widget.drinkName!),
           previousPageTitle: 'Recipes',
           trailing: CupertinoButton(
             onPressed: () {
@@ -49,16 +49,16 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               children: [
                 Center(
                   child: Hero(
-                    tag: widget.drinkName,
+                    tag: widget.drinkName!,
                     transitionOnUserGestures: true,
                     child: Container(
                       height: 300,
                       width: 368,
-                      decoration: new BoxDecoration(
+                      decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(24)),
                         image: DecorationImage(
-                            image: AssetImage(widget.imagePath),
+                            image: AssetImage(widget.imagePath!),
                             fit: BoxFit.cover),
                       ),
                     ),

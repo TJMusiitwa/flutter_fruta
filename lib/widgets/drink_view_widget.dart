@@ -1,8 +1,9 @@
-import 'dart:ui';
+import 'dart:ui' show ImageFilter;
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_fruta/model/smoothie_model.dart';
+import 'package:flutter_fruta/widgets/ingredient_widgets.dart';
 
 import 'package:flutter_fruta/widgets/recipe_card.dart';
 import 'package:hive/hive.dart';
@@ -11,11 +12,11 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 var favBox = Hive.box('frutaFavourites');
 
 class DrinkViewWidget extends StatefulWidget {
-  final String drinkName;
+  final String? drinkName;
 
   const DrinkViewWidget({
-    Key key,
-    @required this.drinkName,
+    Key? key,
+    required this.drinkName,
   }) : super(key: key);
 
   @override
@@ -29,14 +30,14 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
     _fetchIngredientsData();
   }
 
-  Future<void> _fetchIngredientsData() async {
+  Future<String> _fetchIngredientsData() async {
     return await DefaultAssetBundle.of(context)
-        .loadString("assets/smoothie_data.json");
+        .loadString('assets/smoothie_data.json');
   }
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
+    var cardKey = GlobalKey<FlipCardState>();
     return FutureBuilder(
       future: _fetchIngredientsData(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -51,17 +52,14 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
           );
         }
 
-        return snapshot.hasData == null
-            ? Center(
-                child: Text('There are no details about ${widget.drinkName}'),
-              )
-            : Stack(
+        return snapshot.hasData
+            ? Stack(
                 children: [
                   CupertinoScrollbar(
                     child: NestedScrollView(
                       headerSliverBuilder: (context, _) => [
                         CupertinoSliverNavigationBar(
-                          largeTitle: Text(widget.drinkName),
+                          largeTitle: Text(widget.drinkName!),
                           previousPageTitle: 'Menu',
                           trailing: CupertinoButton(
                             onPressed: () {
@@ -76,8 +74,8 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                     'desc': smoothieDetails.description,
                                     'ingredients': [
                                       for (var item
-                                          in smoothieDetails.ingredients)
-                                        item.localizedFoodItemNames.en
+                                          in smoothieDetails.ingredients!)
+                                        item.localizedFoodItemNames!.en
                                     ].join(', '),
                                   });
                                 }
@@ -111,10 +109,10 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                       MediaQuery.of(context).size.height / 1.5,
                                   minWidth: MediaQuery.of(context).size.width),
                               child: Hero(
-                                tag: widget.drinkName,
+                                tag: widget.drinkName!,
                                 transitionOnUserGestures: true,
                                 child: Image.asset(
-                                  smoothieDetails.imagePath,
+                                  smoothieDetails.imagePath!,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -135,7 +133,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      smoothieDetails.description,
+                                      smoothieDetails.description!,
                                       style: CupertinoTheme.of(context)
                                           .textTheme
                                           .textStyle
@@ -145,7 +143,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                           ),
                                     ),
                                     Text(
-                                      "${smoothieDetails.calories} calories",
+                                      '${smoothieDetails.calories} calories',
                                       maxLines: 1,
                                       style: CupertinoTheme.of(context)
                                           .textTheme
@@ -187,10 +185,11 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                           crossAxisCount: 2,
                                           mainAxisSpacing: 16,
                                           crossAxisSpacing: 16),
-                                  itemCount: smoothieDetails.ingredients.length,
+                                  itemCount:
+                                      smoothieDetails.ingredients!.length,
                                   itemBuilder: (context, index) {
                                     var singleIngredient =
-                                        smoothieDetails.ingredients[index];
+                                        smoothieDetails.ingredients![index];
                                     return GestureDetector(
                                       onTap: () {
                                         showCupertinoDialog(
@@ -239,374 +238,47 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                         color: Color(0xAAF2F2F2),
                         child: Center(
                           child: CupertinoButton.filled(
-                            child: Text('Buy with Apple Pay'),
                             onPressed: () {
                               showCupertinoModalBottomSheet(
                                 context: context,
                                 expand: true,
                                 backgroundColor: CupertinoColors.black,
-                                builder: (_, __) {
+                                builder: (_) {
                                   return PurchaseScreen(
                                       smoothieDetails: smoothieDetails);
                                 },
                               );
                             },
+                            child: Text('Buy with Apple Pay'),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ],
+              )
+            : Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'There are no details about ${widget.drinkName}',
+                    softWrap: true,
+                    style: CupertinoTheme.of(context)
+                        .textTheme
+                        .textStyle
+                        .copyWith(fontSize: 25),
+                  ),
+                ),
               );
       },
     );
   }
 }
 
-class IngredientGridItem extends StatelessWidget {
-  const IngredientGridItem({
-    Key key,
-    @required this.singleIngredient,
-  }) : super(key: key);
-
-  final Ingredient singleIngredient;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 180,
-      width: 180,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Hero(
-              tag: singleIngredient.identifier,
-              child: Image.asset(
-                  'assets/ingredients/${singleIngredient.identifier}.jpg',
-                  fit: BoxFit.cover),
-            ),
-          ),
-          Text(
-            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
-            textScaleFactor: 0.8,
-            textAlign: TextAlign.center,
-            softWrap: true,
-            style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                foreground: Paint()
-                  ..blendMode = BlendMode.softLight
-                  ..color = CupertinoColors.black),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class BackIngredientCard extends StatelessWidget {
-  const BackIngredientCard({
-    Key key,
-    @required this.singleIngredient,
-    @required this.cardKey,
-  }) : super(key: key);
-
-  final Ingredient singleIngredient;
-  final GlobalKey<FlipCardState> cardKey;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Image.asset(
-                'assets/ingredients/${singleIngredient.identifier}.jpg',
-                fit: BoxFit.cover,
-                height: 500,
-                width: 400,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Nutrition Facts',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .navTitleTextStyle
-                      .copyWith(fontSize: 35),
-                ),
-                Text(
-                  'Serving Size 1 Cup',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
-                      .copyWith(fontSize: 15),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '112 calories',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
-                      .copyWith(fontSize: 20, fontWeight: FontWeight.w400),
-                ),
-                Container(
-                  height: 1,
-                  color: CupertinoColors.separator,
-                ),
-                NutritionFactsList(singleIngredient: singleIngredient),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: Container(
-              height: 70,
-              //color: Color(0xfffff). //Color(0x90ffffff),
-              child: Row(
-                children: [
-                  Spacer(),
-                  CupertinoButton(
-                    child: Icon(CupertinoIcons.arrow_left_circle_fill,
-                        size: 40,
-                        color: CupertinoColors.inactiveGray.withOpacity(0.7)),
-                    onPressed: () => cardKey.currentState.toggleCard(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class FrontIngredientCard extends StatelessWidget {
-  const FrontIngredientCard({
-    Key key,
-    @required this.singleIngredient,
-    @required this.cardKey,
-  }) : super(key: key);
-
-  final Ingredient singleIngredient;
-  final GlobalKey<FlipCardState> cardKey;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned.fill(
-            child: Hero(
-              tag: singleIngredient.identifier,
-              child: Image.asset(
-                  'assets/ingredients/${singleIngredient.identifier}.jpg',
-                  fit: BoxFit.cover),
-            ),
-          ),
-          Positioned(
-              top: 6,
-              right: 6,
-              child: CupertinoButton(
-                  child: Icon(CupertinoIcons.clear_circled_solid,
-                      size: 40,
-                      color: CupertinoColors.inactiveGray.withOpacity(0.7)),
-                  onPressed: () => Navigator.pop(context))),
-          Positioned(
-            bottom: 6,
-            right: 6,
-            child: CupertinoButton(
-              child: Icon(CupertinoIcons.info_circle_fill,
-                  size: 40,
-                  color: CupertinoColors.inactiveGray.withOpacity(0.7)),
-              onPressed: () => cardKey.currentState.toggleCard(),
-            ),
-          ),
-          Text(
-            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
-            textScaleFactor: 1.5,
-            textAlign: TextAlign.center,
-            softWrap: true,
-            style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                foreground: Paint()
-                  ..blendMode = BlendMode.softLight
-                  ..color = CupertinoColors.black),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class NutritionFactsList extends StatelessWidget {
-  const NutritionFactsList({
-    Key key,
-    @required this.singleIngredient,
-  }) : super(key: key);
-
-  final Ingredient singleIngredient;
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoScrollbar(
-      child: ListView(
-        padding: EdgeInsets.only(left: 5, right: 5),
-        shrinkWrap: true,
-        children: [
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Total Fat',
-            nutritionQty: singleIngredient.totalSaturatedFat,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            nutritionFact: 'Total Saturated Fat',
-            nutritionQty: singleIngredient.totalSaturatedFat,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            nutritionFact: 'Total Monounsaturated Fat',
-            nutritionQty: singleIngredient.totalMonounsaturatedFat,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            nutritionFact: 'Total Polyunsaturated Fat',
-            nutritionQty: singleIngredient.totalPolyunsaturatedFat,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Cholestral',
-            nutritionQty: singleIngredient.cholesterol,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Sodium',
-            nutritionQty: singleIngredient.sodium,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Total Carbohydrates',
-            nutritionQty: singleIngredient.totalCarbohydrates,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            nutritionFact: 'Dietary Fiber',
-            nutritionQty: singleIngredient.dietaryFiber,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            nutritionFact: 'Sugar',
-            nutritionQty: singleIngredient.sugar,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Protein',
-            nutritionQty: singleIngredient.protein,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Calcium',
-            nutritionQty: singleIngredient.calcium,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Potassium',
-            nutritionQty: singleIngredient.potassium,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Vitamin A',
-            nutritionQty: singleIngredient.vitaminA,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Vitamin C',
-            nutritionQty: singleIngredient.vitaminC,
-          ),
-          NutritionSeparator(),
-          NutritionRow(
-            leftMargin: EdgeInsets.zero,
-            nutritionFact: 'Iron',
-            nutritionQty: singleIngredient.iron,
-          ),
-          NutritionSeparator(),
-        ],
-      ),
-    );
-  }
-}
-
-class NutritionRow extends StatelessWidget {
-  final String nutritionFact, nutritionQty;
-  final EdgeInsets leftMargin;
-  const NutritionRow({
-    Key key,
-    @required this.nutritionFact,
-    @required this.nutritionQty,
-    this.leftMargin = const EdgeInsets.only(left: 16),
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(2),
-      margin: leftMargin,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(nutritionFact), Text(nutritionQty)],
-      ),
-    );
-  }
-}
-
-class NutritionSeparator extends StatelessWidget {
-  const NutritionSeparator({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 0.5,
-      color: CupertinoColors.separator,
-    );
-  }
-}
-
 class PurchaseScreen extends StatelessWidget {
   const PurchaseScreen({
-    Key key,
-    @required this.smoothieDetails,
+    Key? key,
+    required this.smoothieDetails,
   }) : super(key: key);
 
   final Smoothie smoothieDetails;
@@ -617,10 +289,10 @@ class PurchaseScreen extends StatelessWidget {
       children: [
         Container(
           //height: MediaQuery.of(context).size.height / 1.4,
-          decoration: new BoxDecoration(
+          decoration: BoxDecoration(
             color: CupertinoColors.white.withOpacity(0.0),
             image: DecorationImage(
-                image: AssetImage(smoothieDetails.imagePath),
+                image: AssetImage(smoothieDetails.imagePath!),
                 fit: BoxFit.cover),
           ),
         ),

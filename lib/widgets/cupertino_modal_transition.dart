@@ -11,7 +11,7 @@ class CupertinoModalTransition extends StatelessWidget {
   /// Animation curve to be applied to [animation]
   ///
   /// Defaults to [Curves.easeOut]
-  final Curve animationCurve;
+  final Curve? animationCurve;
 
   /// Widget that will be displayed at the top
   final Widget child;
@@ -22,10 +22,10 @@ class CupertinoModalTransition extends StatelessWidget {
   final Widget behindChild;
 
   const CupertinoModalTransition({
-    Key key,
-    @required this.animation,
-    @required this.child,
-    @required this.behindChild,
+    Key? key,
+    required this.animation,
+    required this.child,
+    required this.behindChild,
     this.animationCurve,
   }) : super(key: key);
 
@@ -49,7 +49,6 @@ class CupertinoModalTransition extends StatelessWidget {
       value: SystemUiOverlayStyle.light,
       child: AnimatedBuilder(
         animation: curvedAnimation,
-        child: child,
         builder: (context, child) {
           final progress = curvedAnimation.value;
           final yOffset = progress * paddingTop;
@@ -77,10 +76,11 @@ class CupertinoModalTransition extends StatelessWidget {
                   ),
                 ),
               ),
-              child,
+              child!,
             ],
           );
         },
+        child: child,
       ),
     );
   }

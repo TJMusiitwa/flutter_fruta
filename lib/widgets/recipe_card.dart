@@ -9,9 +9,9 @@ class FrostyBackground extends StatelessWidget {
     this.child,
   });
 
-  final Color color;
+  final Color? color;
   final double intensity;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,9 @@ class FrostyBackground extends StatelessWidget {
 }
 
 class RecipeCard extends StatelessWidget {
-  final String imagePath;
+  final String? imagePath;
 
-  const RecipeCard({Key key, this.imagePath}) : super(key: key);
+  const RecipeCard({Key? key, this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class RecipeCard extends StatelessWidget {
               height: 250,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(imagePath))),
+                      fit: BoxFit.cover, image: AssetImage(imagePath!))),
             ),
             Positioned(
                 bottom: 0,
@@ -64,14 +64,14 @@ class RecipeCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Unlock All Recipes",
+                          'Unlock All Recipes',
                           style: CupertinoTheme.of(context)
                               .textTheme
                               .navTitleTextStyle
                               .copyWith(fontSize: 23),
                         ),
                         Text(
-                          "Loading...",
+                          'Loading...',
                           style: CupertinoTheme.of(context)
                               .textTheme
                               .textStyle

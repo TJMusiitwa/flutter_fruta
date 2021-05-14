@@ -17,7 +17,7 @@ class FavouritesScreen extends StatelessWidget {
       ],
       body: ValueListenableBuilder(
         valueListenable: Hive.box('frutaFavourites').listenable(),
-        builder: (context, box, child) {
+        builder: (context, dynamic box, child) {
           if (box.isEmpty) {
             return Align(
               alignment: Alignment.center,
@@ -39,7 +39,7 @@ class FavouritesScreen extends StatelessWidget {
                   ingredients: favItem[index]['ingredients'].toString(),
                   onTap: () => showCupertinoModalBottomSheet(
                       context: context,
-                      builder: (context, controller) {
+                      builder: (context) {
                         return Container(
                           height: MediaQuery.of(context).size.height / 2,
                           child: FavouritesBottomWidget(

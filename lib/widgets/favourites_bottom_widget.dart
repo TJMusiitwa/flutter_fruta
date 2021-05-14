@@ -3,10 +3,10 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 class FavouritesBottomWidget extends StatelessWidget {
-  final String name, calories, imagePath, desc, ing;
+  final String? name, calories, imagePath, desc, ing;
 
   const FavouritesBottomWidget(
-      {Key key, this.imagePath, this.name, this.calories, this.desc, this.ing})
+      {Key? key, this.imagePath, this.name, this.calories, this.desc, this.ing})
       : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class FavouritesBottomWidget extends StatelessWidget {
                           topRight: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          imagePath,
+                          imagePath!,
                           // color: CupertinoColors.systemGrey2,
                           // colorBlendMode: BlendMode.darken,
                           fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class FavouritesBottomWidget extends StatelessWidget {
                     left: 10,
                     right: 20,
                     child: Text(
-                      name,
+                      name!,
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .navLargeTitleTextStyle
@@ -68,7 +68,7 @@ class FavouritesBottomWidget extends StatelessWidget {
                                     .primaryColor
                                     .withOpacity(0.6)),
                             child: Text(
-                              "$calories Cal",
+                              '$calories Cal',
                               style: CupertinoTheme.of(context)
                                   .textTheme
                                   .actionTextStyle
@@ -86,7 +86,7 @@ class FavouritesBottomWidget extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 width: MediaQuery.of(context).size.width,
-                child: Text("Ingredients: $ing",
+                child: Text('Ingredients: $ing',
                     softWrap: true,
                     textAlign: TextAlign.start,
                     style: CupertinoTheme.of(context).textTheme.textStyle),
@@ -95,7 +95,7 @@ class FavouritesBottomWidget extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 width: MediaQuery.of(context).size.width,
-                child: Text(desc,
+                child: Text(desc!,
                     softWrap: true,
                     textAlign: TextAlign.start,
                     style: CupertinoTheme.of(context).textTheme.textStyle),

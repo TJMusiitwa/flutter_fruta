@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
           tabBuilder: (context, index) {
-            CupertinoTabView returnValue;
+            late CupertinoTabView returnValue;
             switch (index) {
               case 0:
                 returnValue = CupertinoTabView(

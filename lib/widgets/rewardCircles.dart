@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class RewardCircles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Widget> widgets = [];
+    var widgets = <Widget>[];
     for (var x = 0; x < 5; x++) {
       widgets.add(
         Container(

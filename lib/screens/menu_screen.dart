@@ -16,9 +16,9 @@ class _MenuScreenState extends State<MenuScreen> {
     _fetchSmoothieData();
   }
 
-  Future<void> _fetchSmoothieData() async {
+  Future<String> _fetchSmoothieData() async {
     return await DefaultAssetBundle.of(context)
-        .loadString("assets/smoothie_data.json");
+        .loadString('assets/smoothie_data.json');
   }
 
   @override
@@ -52,18 +52,15 @@ class _MenuScreenState extends State<MenuScreen> {
 
           final smoothie = smoothieFromJson(snapshot.data.toString());
 
-          return snapshot.hasData == null
-              ? Center(
-                  child: Text('There are no smoothies to show'),
-                )
-              : CupertinoScrollbar(
+          return snapshot.hasData
+              ? CupertinoScrollbar(
                   child: ListView.separated(
                     itemCount: smoothie.length,
                     itemBuilder: (BuildContext context, int index) {
                       var smoothieItem = smoothie[index];
                       var _ingredients = [
-                        for (final i in smoothieItem.ingredients)
-                          i.localizedFoodItemNames.en
+                        for (final i in smoothieItem.ingredients!)
+                          i.localizedFoodItemNames!.en
                       ].join(', ');
 
                       return MenuListTile(
@@ -88,6 +85,16 @@ class _MenuScreenState extends State<MenuScreen> {
                         height: 0.5,
                       ),
                     ),
+                  ),
+                )
+              : Center(
+                  child: Text(
+                    'There are no smoothies to show',
+                    softWrap: true,
+                    style: CupertinoTheme.of(context)
+                        .textTheme
+                        .textStyle
+                        .copyWith(fontSize: 25),
                   ),
                 );
         },

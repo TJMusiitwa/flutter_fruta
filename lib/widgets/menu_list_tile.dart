@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
 class MenuListTile extends StatelessWidget {
-  final String imagePath, drinkName, drinkCalories, ingredients;
-  final VoidCallback onTap;
+  final String? imagePath, drinkName, drinkCalories, ingredients;
+  final VoidCallback? onTap;
 
   const MenuListTile(
-      {Key key,
+      {Key? key,
       this.imagePath,
       this.drinkName,
       this.drinkCalories,
@@ -31,10 +31,10 @@ class MenuListTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Hero(
-                tag: drinkName,
+                tag: drinkName!,
                 transitionOnUserGestures: true,
                 child: Image.asset(
-                  imagePath,
+                  imagePath!,
                   fit: BoxFit.cover,
                   width: 100,
                   height: 100,
@@ -50,21 +50,21 @@ class MenuListTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      drinkName,
+                      drinkName!,
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .navTitleTextStyle
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      ingredients,
+                      ingredients!,
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .textStyle
                           .copyWith(fontWeight: FontWeight.w400),
                     ),
                     Text(
-                      "$drinkCalories calories",
+                      '$drinkCalories calories',
                       maxLines: 1,
                       style: CupertinoTheme.of(context)
                           .textTheme

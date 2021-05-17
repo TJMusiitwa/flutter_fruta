@@ -8,7 +8,7 @@ The smoothie images used for this project are sourced from Unsplash and covered 
 ## To-Do
 
  - [x] Fix Rewards Screen
- - [ ] Make Proper the modal screen with iOS 13 likeness
+ - [x] Make Proper the modal screen with iOS 13 likeness
  - [ ] Add Home widgets for iOS 14 support
  - [ ] Make an AppClip???
 

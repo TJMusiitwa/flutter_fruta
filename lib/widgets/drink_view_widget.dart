@@ -243,6 +243,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                 context: context,
                                 expand: true,
                                 backgroundColor: CupertinoColors.black,
+                                useRootNavigator: true,
                                 builder: (_) {
                                   return PurchaseScreen(
                                       smoothieDetails: smoothieDetails);

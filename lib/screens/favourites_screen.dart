@@ -11,7 +11,7 @@ class FavouritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return NestedScrollView(
       headerSliverBuilder: (context, _) => [
-        CupertinoSliverNavigationBar(
+        const CupertinoSliverNavigationBar(
           largeTitle: Text('Favourites'),
         ),
       ],
@@ -29,7 +29,7 @@ class FavouritesScreen extends StatelessWidget {
           }
           return ListView.builder(
             itemCount: box.length,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               var favItem = box.values.toList();
               return MenuListTile(
@@ -40,7 +40,7 @@ class FavouritesScreen extends StatelessWidget {
                   onTap: () => showCupertinoModalBottomSheet(
                       context: context,
                       builder: (context) {
-                        return Container(
+                        return SizedBox(
                           height: MediaQuery.of(context).size.height / 2,
                           child: FavouritesBottomWidget(
                             name: favItem[index]['name'],

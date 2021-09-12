@@ -10,7 +10,7 @@ class RecipesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        CupertinoSliverNavigationBar(
+        const CupertinoSliverNavigationBar(
           largeTitle: Text('Recipes'),
         ),
         SliverSafeArea(
@@ -19,13 +19,13 @@ class RecipesScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8, top: 0),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: RecipeCard(
                       imagePath: 'assets/smoothie/recipes-button-bg@1x.png',
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Padding(
@@ -53,7 +53,7 @@ class RecipesScreen extends StatelessWidget {
                         return ListView.separated(
                           shrinkWrap: true,
                           itemCount: box.length,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {
                             var favItem = box.values.toList();
                             return MenuListTile(

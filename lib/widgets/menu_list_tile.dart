@@ -78,7 +78,7 @@ class MenuListTile extends StatelessWidget {
               ),
             ),
             //Spacer(),
-            Center(
+            const Center(
               child: Icon(CupertinoIcons.chevron_forward),
             )
           ],

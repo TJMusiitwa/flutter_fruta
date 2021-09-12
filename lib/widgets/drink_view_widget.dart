@@ -4,7 +4,6 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_fruta/model/smoothie_model.dart';
 import 'package:flutter_fruta/widgets/ingredient_widgets.dart';
-
 import 'package:flutter_fruta/widgets/recipe_card.dart';
 import 'package:hive/hive.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -47,7 +46,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
             .single;
 
         if (snapshot.data == null) {
-          return Center(
+          return const Center(
             child: CupertinoActivityIndicator(),
           );
         }
@@ -158,7 +157,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Padding(
@@ -179,9 +178,9 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                   left: 8, right: 8, bottom: 90),
                               child: GridView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
                                           mainAxisSpacing: 16,
                                           crossAxisSpacing: 16),
@@ -198,7 +197,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                           builder: (_) => CupertinoPopupSurface(
                                             isSurfacePainted: true,
                                             child: Center(
-                                              child: Container(
+                                              child: SizedBox(
                                                 height: 500,
                                                 width: 400,
                                                 child: FlipCard(
@@ -232,10 +231,10 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                     bottom: 79,
                     left: 0,
                     right: 0,
-                    child: Container(
+                    child: SizedBox(
                       height: 90,
                       child: FrostyBackground(
-                        color: Color(0xAAF2F2F2),
+                        color: const Color(0xAAF2F2F2),
                         child: Center(
                           child: CupertinoButton.filled(
                             onPressed: () {
@@ -250,7 +249,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                 },
                               );
                             },
-                            child: Text('Buy with Apple Pay'),
+                            child: const Text('Buy with Apple Pay'),
                           ),
                         ),
                       ),
@@ -297,12 +296,10 @@ class PurchaseScreen extends StatelessWidget {
                 fit: BoxFit.cover),
           ),
         ),
-        Container(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              color: CupertinoColors.systemGrey5.withOpacity(0.2),
-            ),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            color: CupertinoColors.systemGrey5.withOpacity(0.2),
           ),
         ),
         Align(
@@ -310,7 +307,7 @@ class PurchaseScreen extends StatelessWidget {
             width: 300,
             height: 300,
             padding: const EdgeInsets.all(36),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: CupertinoColors.white),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -324,7 +321,7 @@ class PurchaseScreen extends StatelessWidget {
                       .navLargeTitleTextStyle
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Text(

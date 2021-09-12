@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/cupertino.dart';
 
 class RewardCircles extends StatelessWidget {
@@ -9,7 +11,7 @@ class RewardCircles extends StatelessWidget {
         Container(
           height: 48.0,
           width: 55.0,
-          margin: EdgeInsets.all(6.0),
+          margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
               //borderRadius: BorderRadius.circular(10.0),
               color: CupertinoColors.systemIndigo.withOpacity(0.5),
@@ -17,13 +19,13 @@ class RewardCircles extends StatelessWidget {
         ),
       );
     }
-    return Container(
+    return SizedBox(
         height: 10.0,
         child: ListView(
             scrollDirection: Axis.horizontal,
             clipBehavior: Clip.antiAlias,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(2.0),
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(2.0),
             children: widgets));
   }
 }

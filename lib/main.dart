@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
       title: 'Flutter Fruta',
-      theme: CupertinoThemeData(
+      theme: const CupertinoThemeData(
           primaryColor: Color.fromRGBO(229, 150, 181, 1),
           textTheme: CupertinoTextThemeData()),
       onGenerateRoute: (settings) => MaterialWithModalsPageRoute(
         builder: (context) => CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                     icon: Icon(CupertinoIcons.list_bullet), label: 'Menu'),
                 BottomNavigationBarItem(

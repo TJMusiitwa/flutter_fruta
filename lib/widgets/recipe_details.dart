@@ -64,7 +64,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -77,7 +77,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                         fontSize: 25,
                       ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Expanded(child: ListView())

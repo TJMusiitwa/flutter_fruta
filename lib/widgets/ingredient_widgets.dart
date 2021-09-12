@@ -50,7 +50,7 @@ class BackIngredientCard extends StatelessWidget {
                       .textStyle
                       .copyWith(fontSize: 15),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -72,12 +72,12 @@ class BackIngredientCard extends StatelessWidget {
             bottom: 0,
             right: 0,
             left: 0,
-            child: Container(
+            child: SizedBox(
               height: 70,
               //color: Color(0xfffff). //Color(0x90ffffff),
               child: Row(
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   CupertinoButton(
                     onPressed: () => cardKey.currentState!.toggleCard(),
                     child: Icon(CupertinoIcons.arrow_left_circle_fill,
@@ -215,7 +215,7 @@ class NutritionFactsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoScrollbar(
       child: ListView(
-        padding: EdgeInsets.only(left: 5, right: 5),
+        padding: const EdgeInsets.only(left: 5, right: 5),
         shrinkWrap: true,
         children: [
           NutritionRow(
@@ -223,86 +223,86 @@ class NutritionFactsList extends StatelessWidget {
             nutritionFact: 'Total Fat',
             nutritionQty: singleIngredient.totalSaturatedFat,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             nutritionFact: 'Total Saturated Fat',
             nutritionQty: singleIngredient.totalSaturatedFat,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             nutritionFact: 'Total Monounsaturated Fat',
             nutritionQty: singleIngredient.totalMonounsaturatedFat,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             nutritionFact: 'Total Polyunsaturated Fat',
             nutritionQty: singleIngredient.totalPolyunsaturatedFat,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Cholestral',
             nutritionQty: singleIngredient.cholesterol,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Sodium',
             nutritionQty: singleIngredient.sodium,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Total Carbohydrates',
             nutritionQty: singleIngredient.totalCarbohydrates,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             nutritionFact: 'Dietary Fiber',
             nutritionQty: singleIngredient.dietaryFiber,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             nutritionFact: 'Sugar',
             nutritionQty: singleIngredient.sugar,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Protein',
             nutritionQty: singleIngredient.protein,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Calcium',
             nutritionQty: singleIngredient.calcium,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Potassium',
             nutritionQty: singleIngredient.potassium,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Vitamin A',
             nutritionQty: singleIngredient.vitaminA,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Vitamin C',
             nutritionQty: singleIngredient.vitaminC,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
           NutritionRow(
             leftMargin: EdgeInsets.zero,
             nutritionFact: 'Iron',
             nutritionQty: singleIngredient.iron,
           ),
-          NutritionSeparator(),
+          const NutritionSeparator(),
         ],
       ),
     );
@@ -322,7 +322,7 @@ class NutritionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(2),
+      padding: const EdgeInsets.all(2),
       margin: leftMargin,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

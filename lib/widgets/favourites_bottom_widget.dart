@@ -11,7 +11,7 @@ class FavouritesBottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height / 2.5,
       width: MediaQuery.of(context).size.width,
       child: PhysicalModel(
@@ -24,11 +24,11 @@ class FavouritesBottomWidget extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height / 3.5,
                     width: MediaQuery.of(context).size.width,
                     child: ClipRRect(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10),
                         ),

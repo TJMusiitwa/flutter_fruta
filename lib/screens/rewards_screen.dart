@@ -14,11 +14,11 @@ class _RewardsScreenState extends State<RewardsScreen>
     return CupertinoPageScaffold(
       backgroundColor: CupertinoTheme.of(context).brightness == Brightness.dark
           ? CupertinoColors.systemIndigo
-          : Color.fromRGBO(177, 159, 219, 0.4),
+          : const Color.fromRGBO(177, 159, 219, 0.4),
       child: AnimatedBackground(
         vsync: this,
         behaviour: RandomParticleBehaviour(
-          options: ParticleOptions(
+          options: const ParticleOptions(
             particleCount: 10,
             spawnMinSpeed: 4,
             spawnMaxSpeed: 5,
@@ -38,7 +38,7 @@ class _RewardsScreenState extends State<RewardsScreen>
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   shadowColor: CupertinoColors.black,
                   elevation: 2,
-                  child: Container(
+                  child: SizedBox(
                     //height: 200,
                     width: 350,
                     child: Padding(

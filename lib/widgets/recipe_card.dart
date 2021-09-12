@@ -21,7 +21,7 @@ class FrostyBackground extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Color(0x90ffffff)
+                ? const Color(0x90ffffff)
                 : CupertinoColors.darkBackgroundGray,
           ),
           child: child,

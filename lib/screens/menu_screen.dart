@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter_fruta/model/smoothie_model.dart';
 import 'package:flutter_fruta/widgets/drink_view_widget.dart';
 import 'package:flutter_fruta/widgets/menu_list_tile.dart';
@@ -26,7 +25,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          CupertinoSliverNavigationBar(
+          const CupertinoSliverNavigationBar(
             largeTitle: Text('Menu'),
           ),
         ];
@@ -36,16 +35,16 @@ class _MenuScreenState extends State<MenuScreen> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting &&
               snapshot.data != null) {
-            return Center(
+            return const Center(
               child: CupertinoActivityIndicator(),
             );
           }
           if (snapshot.hasError) {
-            print(snapshot.error.toString());
+            debugPrint(snapshot.error.toString());
           }
 
           if (snapshot.data == null) {
-            return Center(
+            return const Center(
               child: CupertinoActivityIndicator(),
             );
           }

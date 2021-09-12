@@ -24,7 +24,7 @@ jobs:
     
     - name: Build iOS App with Release Mode
       run: |
-          flutter build ipa --release --no-codesign
+          flutter build ipa --release
           cd build/ios/iphoneos
           mkdir Payload
           cd Payload

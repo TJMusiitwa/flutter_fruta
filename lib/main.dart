@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart' show ThemeMode;
+import 'package:flutter_fruta/macos_main.dart';
 import 'package:flutter_fruta/screens/favourites_screen.dart';
 import 'package:flutter_fruta/screens/menu_screen.dart';
 import 'package:flutter_fruta/screens/recipes_screen.dart';
 import 'package:flutter_fruta/screens/rewards_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:macos_ui/macos_ui.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart'
     show MaterialWithModalsPageRoute;
 
@@ -17,6 +22,21 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    if (Platform.isMacOS) {
+      return MacosApp(
+        title: 'Flutter Fruta',
+        theme: MacosThemeData(
+          primaryColor: const Color.fromRGBO(229, 150, 181, 1),
+          //typography: MacosTheme.of(context).typography,
+        ),
+        darkTheme: MacosThemeData.dark().copyWith(
+          primaryColor: const Color.fromRGBO(229, 150, 181, 1),
+          typography: MacosTypography.white,
+        ),
+        themeMode: ThemeMode.system,
+        home: const MacOSMain(),
+      );
+    }
     return CupertinoApp(
       title: 'Flutter Fruta',
       theme: const CupertinoThemeData(

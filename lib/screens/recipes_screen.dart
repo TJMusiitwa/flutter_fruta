@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_fruta/widgets/menu_list_tile.dart';
 import 'package:flutter_fruta/widgets/recipe_card.dart';
 import 'package:flutter_fruta/widgets/recipe_details.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class RecipesScreen extends StatelessWidget {

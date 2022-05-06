@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_fruta/screens/favourites_screen.dart';
-import 'package:flutter_fruta/screens/menu_screen.dart';
-import 'package:flutter_fruta/screens/recipes_screen.dart';
-import 'package:flutter_fruta/screens/rewards_screen.dart';
+import 'package:flutter_fruta/macos_screens/favourites_screen.dart';
+import 'package:flutter_fruta/macos_screens/menu_screen.dart';
+import 'package:flutter_fruta/macos_screens/recipes_screen.dart';
+import 'package:flutter_fruta/macos_screens/rewards_screen.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacOSMain extends StatefulWidget {
@@ -20,7 +20,12 @@ class _MacOSMainState extends State<MacOSMain> {
     return MacosWindow(
       child: IndexedStack(
         index: pageIndex,
-        children: [MenuScreen(), FavouritesScreen(), RecipesScreen()],
+        children: const [
+          MacosMenuScreen(),
+          MacosFavouritesScreen(),
+          MacosRecipesScreen(),
+          MacosRewardsScreen()
+        ],
       ),
       sidebar: Sidebar(
         builder: (context, controller) => SidebarItems(
@@ -40,24 +45,20 @@ class _MacOSMainState extends State<MacOSMain> {
                 leading: Icon(CupertinoIcons.book_fill),
                 label: Text('Recipes'),
               ),
+              SidebarItem(
+                leading: Icon(CupertinoIcons.checkmark_seal),
+                label: Text('Rewards'),
+              ),
             ]),
         minWidth: 200,
         isResizable: false,
-        bottom: GestureDetector(
-          onTap: () => Navigator.push(
-              context, CupertinoPageRoute(builder: (_) => RewardsScreen())),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Icon(CupertinoIcons.checkmark_seal),
-                SizedBox(width: 8.0),
-                Text('Rewards'),
-              ],
-            ),
-          ),
-        ),
+        bottom: const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: MacosListTile(
+              leading: MacosIcon(CupertinoIcons.profile_circled),
+              title: Text('Fruta User'),
+              subtitle: Text('user@fruta.com'),
+            )),
       ),
     );
   }

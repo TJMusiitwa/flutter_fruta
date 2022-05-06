@@ -7,7 +7,6 @@ import 'package:flutter_fruta/screens/favourites_screen.dart';
 import 'package:flutter_fruta/screens/menu_screen.dart';
 import 'package:flutter_fruta/screens/recipes_screen.dart';
 import 'package:flutter_fruta/screens/rewards_screen.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart'
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Fruta',
         theme: MacosThemeData(
           primaryColor: const Color.fromRGBO(229, 150, 181, 1),
-          //typography: MacosTheme.of(context).typography,
+          typography: MacosTypography.black,
         ),
         darkTheme: MacosThemeData.dark().copyWith(
           primaryColor: const Color.fromRGBO(229, 150, 181, 1),

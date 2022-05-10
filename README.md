@@ -13,13 +13,13 @@ The smoothie images used for this project are sourced from Unsplash and covered 
  - [ ] Make an AppClip???
 
  ## Screenshots
-|Home Screen  |Menu Details  |
-|--|--|
-|![Home Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-12-04%20at%2023.46.48.png)|![Favourites Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-11-18%20at%2012.42.15.png) |
+| Home Screen                                                                                                  | Menu Details                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| ![Home Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-12-04%20at%2023.46.48.png) | ![Favourites Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-11-18%20at%2012.42.15.png) |
 
-|Rewards Screen|Recipes Screen  |
-|--|--|
-|![Rewards Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-12-04%20at%2023.47.52.png)  |![Recipes Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-01-14%20at%2020.13.19.png)  |
+| Rewards Screen                                                                                                  | Recipes Screen                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| ![Rewards Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-12-04%20at%2023.47.52.png) | ![Recipes Screen](screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-01-14%20at%2020.13.19.png) |
 
 
 ### Screen recording

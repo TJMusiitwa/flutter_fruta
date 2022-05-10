@@ -40,6 +40,6 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-/screenshots
+
 **/dgph
 **/dgph~

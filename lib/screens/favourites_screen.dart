@@ -26,6 +26,7 @@ class FavouritesScreen extends StatelessWidget {
             );
           }
           return ListView.builder(
+            padding: const EdgeInsets.only(bottom: 80),
             itemCount: box.length,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {

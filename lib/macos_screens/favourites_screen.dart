@@ -36,16 +36,16 @@ class MacosFavouritesScreen extends StatelessWidget {
                         message: const Text(
                             'Are you sure you want to clear your favourites?\nThis action cannot be undone.'),
                         primaryButton: PushButton(
-                            child: const Text('Delete'),
                             buttonSize: ButtonSize.large,
                             color: MacosColors.systemRedColor,
                             onPressed: () {
                               Hive.box('frutaFavourites').clear();
-                            }),
+                            },
+                            child: const Text('Delete')),
                         secondaryButton: PushButton(
-                          child: const Text('Cancel'),
                           buttonSize: ButtonSize.large,
                           onPressed: () => Navigator.of(context).pop(),
+                          child: const Text('Cancel'),
                         ),
                         horizontalActions: false,
                       );

@@ -2,6 +2,7 @@ import 'dart:ui' show ImageFilter;
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_fruta/model/smoothie_model.dart';
 import 'package:flutter_fruta/widgets/ingredient_widgets.dart';
 import 'package:flutter_fruta/widgets/recipe_card.dart';
@@ -19,7 +20,7 @@ class DrinkViewWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DrinkViewWidgetState createState() => _DrinkViewWidgetState();
+  State<DrinkViewWidget> createState() => _DrinkViewWidgetState();
 }
 
 class _DrinkViewWidgetState extends State<DrinkViewWidget> {
@@ -62,6 +63,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                           previousPageTitle: 'Menu',
                           trailing: CupertinoButton(
                             onPressed: () {
+                              HapticFeedback.mediumImpact();
                               setState(() {
                                 if (favBox.containsKey(widget.drinkName)) {
                                   favBox.delete(widget.drinkName);

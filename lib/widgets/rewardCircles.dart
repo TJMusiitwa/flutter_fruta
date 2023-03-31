@@ -12,11 +12,11 @@ class RewardCircles extends StatelessWidget {
           height: 48.0,
           width: 55.0,
           margin: const EdgeInsets.all(6.0),
-          child: const Icon(CupertinoIcons.checkmark_seal_fill),
           decoration: BoxDecoration(
               //borderRadius: BorderRadius.circular(10.0),
               color: CupertinoColors.systemIndigo.withOpacity(0.5),
               shape: BoxShape.circle),
+          child: const Icon(CupertinoIcons.checkmark_seal_fill),
         ),
       );
     }

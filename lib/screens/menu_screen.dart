@@ -5,7 +5,7 @@ import 'package:flutter_fruta/widgets/menu_list_tile.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
-  _MenuScreenState createState() => _MenuScreenState();
+  State<MenuScreen> createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
@@ -54,10 +54,11 @@ class _MenuScreenState extends State<MenuScreen> {
           return snapshot.hasData
               ? CupertinoScrollbar(
                   child: ListView.separated(
+                    padding: const EdgeInsets.only(bottom: 80),
                     itemCount: smoothie.length,
                     itemBuilder: (BuildContext context, int index) {
                       var smoothieItem = smoothie[index];
-                      var _ingredients = [
+                      var ingredients = [
                         for (final i in smoothieItem.ingredients!)
                           i.localizedFoodItemNames!.en
                       ].join(', ');
@@ -66,13 +67,13 @@ class _MenuScreenState extends State<MenuScreen> {
                         drinkName: smoothieItem.smoothieName,
                         imagePath: smoothieItem.imagePath,
                         drinkCalories: smoothieItem.calories.toString(),
-                        ingredients: _ingredients,
+                        ingredients: ingredients,
                         onTap: () => Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => DrinkViewWidget(
-                                    drinkName: smoothieItem.smoothieName,
-                                  )),
+                            builder: (context) => DrinkViewWidget(
+                                drinkName: smoothieItem.smoothieName),
+                          ),
                         ),
                       );
                     },

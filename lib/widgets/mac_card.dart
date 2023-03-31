@@ -51,7 +51,7 @@ class PressableCard extends StatefulWidget {
       required this.child})
       : super(key: key);
   @override
-  _PressableCardState createState() => _PressableCardState();
+  State<PressableCard> createState() => _PressableCardState();
 }
 
 class _PressableCardState extends State<PressableCard> {

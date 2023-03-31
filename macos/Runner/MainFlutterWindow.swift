@@ -26,4 +26,15 @@ class MainFlutterWindow: NSWindow {
 
     super.awakeFromNib()
   }
+    func window(_ window: NSWindow, willUseFullScreenPresentationOptions proposedOptions: NSApplication.PresentationOptions = []) -> NSApplication.PresentationOptions {
+      return [.autoHideToolbar, .autoHideMenuBar, .fullScreen]
+    }
+
+    func windowWillEnterFullScreen(_ notification: Notification) {
+        self.toolbar?.isVisible = false
+    }
+    
+    func windowDidExitFullScreen(_ notification: Notification) {
+        self.toolbar?.isVisible = true
+    }
 }

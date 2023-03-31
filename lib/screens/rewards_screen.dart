@@ -4,7 +4,7 @@ import 'package:flutter_fruta/widgets/rewardCircles.dart';
 
 class RewardsScreen extends StatefulWidget {
   @override
-  _RewardsScreenState createState() => _RewardsScreenState();
+  State<RewardsScreen> createState() => _RewardsScreenState();
 }
 
 class _RewardsScreenState extends State<RewardsScreen>

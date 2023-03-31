@@ -18,15 +18,6 @@ class _MacOSMainState extends State<MacOSMain> {
   @override
   Widget build(BuildContext context) {
     return MacosWindow(
-      child: IndexedStack(
-        index: pageIndex,
-        children: const [
-          MacosMenuScreen(),
-          MacosFavouritesScreen(),
-          MacosRecipesScreen(),
-          MacosRewardsScreen()
-        ],
-      ),
       sidebar: Sidebar(
         builder: (context, controller) => SidebarItems(
             currentIndex: pageIndex,
@@ -59,6 +50,15 @@ class _MacOSMainState extends State<MacOSMain> {
               title: Text('Fruta User'),
               subtitle: Text('user@fruta.com'),
             )),
+      ),
+      child: IndexedStack(
+        index: pageIndex,
+        children: const [
+          MacosMenuScreen(),
+          MacosFavouritesScreen(),
+          MacosRecipesScreen(),
+          MacosRewardsScreen()
+        ],
       ),
     );
   }

@@ -9,7 +9,7 @@ class RecipeDetails extends StatefulWidget {
   const RecipeDetails({Key? key, this.imagePath, this.drinkName})
       : super(key: key);
   @override
-  _RecipeDetailsState createState() => _RecipeDetailsState();
+  State<RecipeDetails> createState() => _RecipeDetailsState();
 }
 
 class _RecipeDetailsState extends State<RecipeDetails> {

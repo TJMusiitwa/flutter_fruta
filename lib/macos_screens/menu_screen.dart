@@ -65,7 +65,7 @@ class _MacosMenuScreenState extends State<MacosMenuScreen> {
                       itemCount: smoothie.length,
                       itemBuilder: (BuildContext context, int index) {
                         var smoothieItem = smoothie[index];
-                        var _ingredients = [
+                        var ingredients = [
                           for (final i in smoothieItem.ingredients!)
                             i.localizedFoodItemNames!.en
                         ].join(', ');
@@ -73,7 +73,7 @@ class _MacosMenuScreenState extends State<MacosMenuScreen> {
                         return MacCard(
                           cardImage: smoothieItem.imagePath!,
                           cardTitle: smoothieItem.smoothieName!,
-                          cardSubtitle: _ingredients,
+                          cardSubtitle: ingredients,
                           cardSubtitle2: '${smoothieItem.calories!} Calories',
                           onPressed: () => Navigator.push(
                             context,

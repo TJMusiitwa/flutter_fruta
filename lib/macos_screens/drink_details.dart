@@ -148,18 +148,18 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                           ),
                                           const SizedBox(width: 50),
                                           ClipRRect(
-                                            child: SizedBox(
-                                              width: 200,
-                                              child: Image.asset(
-                                                  widget.smoothie.imagePath!,
-                                                  fit: BoxFit.cover),
-                                            ),
                                             borderRadius:
                                                 const BorderRadius.only(
                                                     topRight:
                                                         Radius.circular(20),
                                                     bottomRight:
                                                         Radius.circular(20)),
+                                            child: SizedBox(
+                                              width: 200,
+                                              child: Image.asset(
+                                                  widget.smoothie.imagePath!,
+                                                  fit: BoxFit.cover),
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -235,6 +235,13 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                   child: SizedBox(
                                     width: 300,
                                     child: PushButton(
+                                        color:
+                                            MacosTheme.of(context).brightness ==
+                                                    Brightness.dark
+                                                ? MacosColors.white
+                                                : MacosColors.black,
+                                        buttonSize: ButtonSize.large,
+                                        onPressed: () {},
                                         child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -249,14 +256,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                                     : MacosColors.white,
                                               ),
                                               const Text('Pay'),
-                                            ]),
-                                        color:
-                                            MacosTheme.of(context).brightness ==
-                                                    Brightness.dark
-                                                ? MacosColors.white
-                                                : MacosColors.black,
-                                        buttonSize: ButtonSize.large,
-                                        onPressed: () {}),
+                                            ])),
                                   ),
                                 )
                               ]),

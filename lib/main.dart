@@ -12,9 +12,19 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart'
     show MaterialWithModalsPageRoute;
 
+Future<void> _configureMacosWindowUtils() async {
+  const config = MacosWindowUtilsConfig(
+    toolbarStyle: NSWindowToolbarStyle.unified,
+  );
+  await config.apply();
+}
+
 Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox('frutaFavourites');
+  if (Platform.isMacOS) {
+    await _configureMacosWindowUtils();
+  }
   runApp(MyApp());
 }
 
@@ -26,11 +36,11 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Fruta',
         theme: MacosThemeData(
           primaryColor: const Color.fromRGBO(229, 150, 181, 1),
-          typography: MacosTypography.black,
+          typography: MacosTypography.darkOpaque(),
         ),
         darkTheme: MacosThemeData.dark().copyWith(
           primaryColor: const Color.fromRGBO(229, 150, 181, 1),
-          typography: MacosTypography.white,
+          typography: MacosTypography.lightOpaque(),
         ),
         themeMode: ThemeMode.system,
         home: const MacOSMain(),

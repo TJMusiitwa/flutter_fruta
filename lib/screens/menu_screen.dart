@@ -59,8 +59,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       var smoothieItem = smoothie[index];
                       var ingredients = [
-                        for (final i in smoothieItem.ingredients!)
-                          i.localizedFoodItemNames!.en
+                        for (final i in smoothieItem.ingredients)
+                          i.localizedFoodItemNames.en
                       ].join(', ');
 
                       return MenuListTile(

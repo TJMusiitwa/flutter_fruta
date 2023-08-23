@@ -25,31 +25,29 @@ class _MacOSMainState extends State<MacOSMain> {
             scrollController: controller,
             items: const [
               SidebarItem(
-                leading: Icon(CupertinoIcons.list_bullet),
+                leading: MacosIcon(CupertinoIcons.list_bullet),
                 label: Text('Menu'),
               ),
               SidebarItem(
-                leading: Icon(CupertinoIcons.heart),
+                leading: MacosIcon(CupertinoIcons.heart),
                 label: Text('Favorites'),
               ),
               SidebarItem(
-                leading: Icon(CupertinoIcons.book_fill),
+                leading: MacosIcon(CupertinoIcons.book_fill),
                 label: Text('Recipes'),
               ),
               SidebarItem(
-                leading: Icon(CupertinoIcons.checkmark_seal),
+                leading: MacosIcon(CupertinoIcons.checkmark_seal),
                 label: Text('Rewards'),
               ),
             ]),
         minWidth: 200,
         isResizable: false,
-        bottom: const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: MacosListTile(
-              leading: MacosIcon(CupertinoIcons.profile_circled),
-              title: Text('Fruta User'),
-              subtitle: Text('user@fruta.com'),
-            )),
+        bottom: const MacosListTile(
+          leading: MacosIcon(CupertinoIcons.profile_circled),
+          title: Text('Fruta User'),
+          subtitle: Text('user@fruta.com'),
+        ),
       ),
       child: IndexedStack(
         index: pageIndex,

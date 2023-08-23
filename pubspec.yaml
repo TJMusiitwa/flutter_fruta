@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 3.0.0
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>3.0.0 <4.0.0'
 
 dependencies:
   animated_background: ^2.0.0
@@ -17,20 +17,23 @@ dependencies:
     sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  macos_ui: ^1.12.2
+  macos_ui: ^2.0.0
   modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.12.0
-  flutter_lints: ^2.0.1
-  flutter_native_splash: ^2.2.19
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^2.0.2
+  flutter_native_splash: ^2.3.2
   flutter_test:
     sdk: flutter
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icon.png"
+  macos:
+    generate: true
+    image_path: "assets/icon.png"
 
 flutter_native_splash:
   color: "#E596B5"

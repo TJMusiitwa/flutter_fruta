@@ -46,6 +46,13 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
             .where((element) => element.smoothieName == widget.drinkName)
             .single;
 
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            snapshot.data != null) {
+          return const Center(
+            child: CupertinoActivityIndicator(),
+          );
+        }
+
         if (snapshot.data == null) {
           return const Center(
             child: CupertinoActivityIndicator(),
@@ -75,8 +82,8 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                     'desc': smoothieDetails.description,
                                     'ingredients': [
                                       for (var item
-                                          in smoothieDetails.ingredients!)
-                                        item.localizedFoodItemNames!.en
+                                          in smoothieDetails.ingredients)
+                                        item.localizedFoodItemNames.en
                                     ].join(', '),
                                   });
                                 }
@@ -113,7 +120,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                 tag: widget.drinkName!,
                                 transitionOnUserGestures: true,
                                 child: Image.asset(
-                                  smoothieDetails.imagePath!,
+                                  smoothieDetails.imagePath,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -134,7 +141,7 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Text(
-                                      smoothieDetails.description!,
+                                      smoothieDetails.description,
                                       style: CupertinoTheme.of(context)
                                           .textTheme
                                           .textStyle
@@ -186,11 +193,10 @@ class _DrinkViewWidgetState extends State<DrinkViewWidget> {
                                           crossAxisCount: 2,
                                           mainAxisSpacing: 16,
                                           crossAxisSpacing: 16),
-                                  itemCount:
-                                      smoothieDetails.ingredients!.length,
+                                  itemCount: smoothieDetails.ingredients.length,
                                   itemBuilder: (context, index) {
                                     var singleIngredient =
-                                        smoothieDetails.ingredients![index];
+                                        smoothieDetails.ingredients[index];
                                     return GestureDetector(
                                       onTap: () {
                                         showCupertinoDialog(
@@ -294,7 +300,7 @@ class PurchaseScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: CupertinoColors.white.withOpacity(0.0),
             image: DecorationImage(
-                image: AssetImage(smoothieDetails.imagePath!),
+                image: AssetImage(smoothieDetails.imagePath),
                 fit: BoxFit.cover),
           ),
         ),

@@ -49,12 +49,12 @@ class _DrinkDetailsState extends State<DrinkDetails> {
         return snapshot.hasData
             ? MacosScaffold(
                 toolBar: ToolBar(
-                  title: Text(widget.smoothie.smoothieName!),
+                  title: Text(widget.smoothie.smoothieName),
                   titleWidth: 250,
                   actions: [
                     ToolBarIconButton(
                       label: 'Favourite',
-                      icon: favBox.containsKey(widget.smoothie.smoothieName!)
+                      icon: favBox.containsKey(widget.smoothie.smoothieName)
                           ? Icon(
                               CupertinoIcons.heart_solid,
                               color: MacosTheme.of(context).primaryColor,
@@ -69,17 +69,17 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                       onPressed: () {
                         setState(() {
                           if (favBox
-                              .containsKey(widget.smoothie.smoothieName!)) {
-                            favBox.delete(widget.smoothie.smoothieName!);
+                              .containsKey(widget.smoothie.smoothieName)) {
+                            favBox.delete(widget.smoothie.smoothieName);
                           } else {
-                            favBox.put(widget.smoothie.smoothieName!, {
-                              'name': widget.smoothie.smoothieName!,
+                            favBox.put(widget.smoothie.smoothieName, {
+                              'name': widget.smoothie.smoothieName,
                               'image': widget.smoothie.imagePath,
                               'calories': widget.smoothie.calories,
                               'desc': widget.smoothie.description,
                               'ingredients': [
-                                for (var item in widget.smoothie.ingredients!)
-                                  item.localizedFoodItemNames!.en
+                                for (var item in widget.smoothie.ingredients)
+                                  item.localizedFoodItemNames.en
                               ].join(', '),
                             });
                           }
@@ -122,8 +122,8 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                                           .spaceBetween,
                                                   children: [
                                                     Text(
-                                                      widget.smoothie
-                                                          .description!,
+                                                      widget
+                                                          .smoothie.description,
                                                       style: MacosTheme.of(
                                                               context)
                                                           .typography
@@ -134,7 +134,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                                                       .bold),
                                                     ),
                                                     Text(
-                                                      '${widget.smoothie.calories!} Calories',
+                                                      '${widget.smoothie.calories} Calories',
                                                       style: MacosTheme.of(
                                                               context)
                                                           .typography
@@ -157,7 +157,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                             child: SizedBox(
                                               width: 200,
                                               child: Image.asset(
-                                                  widget.smoothie.imagePath!,
+                                                  widget.smoothie.imagePath,
                                                   fit: BoxFit.cover),
                                             ),
                                           ),
@@ -184,7 +184,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                   height: 200,
                                   child: ListView.separated(
                                     itemCount:
-                                        smoothieDetails.ingredients!.length,
+                                        smoothieDetails.ingredients.length,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
                                     physics:
@@ -192,7 +192,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       var singleIngredient =
-                                          smoothieDetails.ingredients![index];
+                                          smoothieDetails.ingredients[index];
                                       return GestureDetector(
                                           child: IngredientGridItem(
                                               singleIngredient:
@@ -240,7 +240,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                                                     Brightness.dark
                                                 ? MacosColors.white
                                                 : MacosColors.black,
-                                        buttonSize: ButtonSize.large,
+                                        controlSize: ControlSize.large,
                                         onPressed: () {},
                                         child: Row(
                                             mainAxisAlignment:

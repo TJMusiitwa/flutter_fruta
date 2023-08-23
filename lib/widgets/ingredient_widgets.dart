@@ -113,7 +113,7 @@ class FrontIngredientCard extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Hero(
-              tag: singleIngredient.identifier!,
+              tag: singleIngredient.identifier,
               child: Image.asset(
                   'assets/ingredients/${singleIngredient.identifier}.jpg',
                   fit: BoxFit.cover),
@@ -140,7 +140,7 @@ class FrontIngredientCard extends StatelessWidget {
             ),
           ),
           Text(
-            singleIngredient.localizedFoodItemNames!.en!.toUpperCase(),
+            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
             textScaleFactor: 1.5,
             textAlign: TextAlign.center,
             softWrap: true,
@@ -179,14 +179,14 @@ class IngredientGridItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Hero(
-              tag: singleIngredient.identifier!,
+              tag: singleIngredient.identifier,
               child: Image.asset(
                   'assets/ingredients/${singleIngredient.identifier}.jpg',
                   fit: BoxFit.cover),
             ),
           ),
           Text(
-            singleIngredient.localizedFoodItemNames!.en!.toUpperCase(),
+            singleIngredient.localizedFoodItemNames.en.toUpperCase(),
             textScaleFactor: 0.8,
             textAlign: TextAlign.center,
             softWrap: true,

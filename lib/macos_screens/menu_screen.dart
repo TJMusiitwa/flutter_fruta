@@ -25,77 +25,79 @@ class _MacosMenuScreenState extends State<MacosMenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('Menu'),
-      ),
-      children: [
-        ContentArea(
-          minWidth: 350,
-          builder: (_, controller) => FutureBuilder(
-            future: _fetchSmoothieData(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting &&
-                  snapshot.data != null) {
-                return const Center(
-                  child: ProgressCircle(value: null),
-                );
-              }
-              if (snapshot.hasError) {
-                debugPrint(snapshot.error.toString());
-              }
-
-              if (snapshot.data == null) {
-                return const Center(
-                  child: ProgressCircle(value: null),
-                );
-              }
-              final smoothie = smoothieFromJson(snapshot.data.toString());
-              return snapshot.hasData
-                  ? GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              mainAxisExtent: 300,
-                              mainAxisSpacing: 50,
-                              crossAxisSpacing: 20),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      controller: ScrollController(),
-                      itemCount: smoothie.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var smoothieItem = smoothie[index];
-                        var ingredients = [
-                          for (final i in smoothieItem.ingredients!)
-                            i.localizedFoodItemNames!.en
-                        ].join(', ');
-
-                        return MacCard(
-                          cardImage: smoothieItem.imagePath!,
-                          cardTitle: smoothieItem.smoothieName!,
-                          cardSubtitle: ingredients,
-                          cardSubtitle2: '${smoothieItem.calories!} Calories',
-                          onPressed: () => Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => DrinkDetails(
-                                      smoothie: smoothieItem,
-                                    )),
-                          ),
-                        );
-                      },
-                    )
-                  : Center(
-                      child: Text(
-                        'There are no smoothies to show',
-                        softWrap: true,
-                        style: MacosTheme.of(context).typography.body,
-                      ),
-                    );
-            },
-          ),
+    return CupertinoTabView(
+      builder: (context) => MacosScaffold(
+        toolBar: const ToolBar(
+          title: Text('Menu'),
         ),
-      ],
+        children: [
+          ContentArea(
+            minWidth: 350,
+            builder: (_, controller) => FutureBuilder(
+              future: _fetchSmoothieData(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting &&
+                    snapshot.data != null) {
+                  return const Center(
+                    child: ProgressCircle(value: null),
+                  );
+                }
+                if (snapshot.hasError) {
+                  debugPrint(snapshot.error.toString());
+                }
+
+                if (snapshot.data == null) {
+                  return const Center(
+                    child: ProgressCircle(value: null),
+                  );
+                }
+                final smoothie = smoothieFromJson(snapshot.data.toString());
+                return snapshot.hasData
+                    ? GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                mainAxisExtent: 300,
+                                mainAxisSpacing: 50,
+                                crossAxisSpacing: 20),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        controller: ScrollController(),
+                        itemCount: smoothie.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var smoothieItem = smoothie[index];
+                          var ingredients = [
+                            for (final i in smoothieItem.ingredients)
+                              i.localizedFoodItemNames.en
+                          ].join(', ');
+
+                          return MacCard(
+                            cardImage: smoothieItem.imagePath,
+                            cardTitle: smoothieItem.smoothieName,
+                            cardSubtitle: ingredients,
+                            cardSubtitle2: '${smoothieItem.calories} Calories',
+                            onPressed: () => Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => DrinkDetails(
+                                        smoothie: smoothieItem,
+                                      )),
+                            ),
+                          );
+                        },
+                      )
+                    : Center(
+                        child: Text(
+                          'There are no smoothies to show',
+                          softWrap: true,
+                          style: MacosTheme.of(context).typography.body,
+                        ),
+                      );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

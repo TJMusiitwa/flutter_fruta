@@ -22,7 +22,7 @@ jobs:
     - name: Build iOS App with Release Mode
       run: |
           flutter build ipa --release --no-codesign
-          cd build/ios/iphoneos
+          cd build/ios/ipa
           mkdir Payload
           cd Payload
           ln -s ../Runner.app

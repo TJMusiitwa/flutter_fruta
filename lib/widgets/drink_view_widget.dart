@@ -327,7 +327,9 @@ class PurchaseScreen extends StatelessWidget {
                   style: CupertinoTheme.of(context)
                       .textTheme
                       .navLargeTitleTextStyle
-                      .copyWith(fontWeight: FontWeight.bold),
+                      .copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: CupertinoColors.black),
                 ),
                 const SizedBox(
                   height: 16,

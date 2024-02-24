@@ -141,7 +141,7 @@ class FrontIngredientCard extends StatelessWidget {
           ),
           Text(
             singleIngredient.localizedFoodItemNames.en.toUpperCase(),
-            textScaleFactor: 1.5,
+            textScaler: const TextScaler.linear(1.5),
             textAlign: TextAlign.center,
             softWrap: true,
             style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
@@ -187,7 +187,7 @@ class IngredientGridItem extends StatelessWidget {
           ),
           Text(
             singleIngredient.localizedFoodItemNames.en.toUpperCase(),
-            textScaleFactor: 0.8,
+            textScaler: const TextScaler.linear(0.8),
             textAlign: TextAlign.center,
             softWrap: true,
             style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(

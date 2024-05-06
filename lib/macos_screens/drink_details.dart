@@ -9,7 +9,7 @@ import 'package:macos_ui/macos_ui.dart';
 var favBox = Hive.box('frutaFavourites');
 
 class DrinkDetails extends StatefulWidget {
-  const DrinkDetails({Key? key, required this.smoothie}) : super(key: key);
+  const DrinkDetails({super.key, required this.smoothie});
 
   final Smoothie smoothie;
 

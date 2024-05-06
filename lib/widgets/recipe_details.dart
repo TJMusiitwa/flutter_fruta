@@ -6,8 +6,7 @@ var favBox = Hive.box('frutaFavourites');
 class RecipeDetails extends StatefulWidget {
   final String? imagePath, drinkName;
 
-  const RecipeDetails({Key? key, this.imagePath, this.drinkName})
-      : super(key: key);
+  const RecipeDetails({super.key, this.imagePath, this.drinkName});
   @override
   State<RecipeDetails> createState() => _RecipeDetailsState();
 }

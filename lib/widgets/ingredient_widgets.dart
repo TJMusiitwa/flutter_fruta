@@ -9,10 +9,10 @@ class BackIngredientCard extends StatelessWidget {
 
   final GlobalKey<FlipCardState> cardKey;
   const BackIngredientCard({
-    Key? key,
+    super.key,
     required this.singleIngredient,
     required this.cardKey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +99,10 @@ class FrontIngredientCard extends StatelessWidget {
 
   final GlobalKey<FlipCardState> cardKey;
   const FrontIngredientCard({
-    Key? key,
+    super.key,
     required this.singleIngredient,
     required this.cardKey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -161,9 +161,9 @@ class IngredientGridItem extends StatelessWidget {
   final Ingredient singleIngredient;
 
   const IngredientGridItem({
-    Key? key,
+    super.key,
     required this.singleIngredient,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -207,9 +207,9 @@ class NutritionFactsList extends StatelessWidget {
   final Ingredient singleIngredient;
 
   const NutritionFactsList({
-    Key? key,
+    super.key,
     required this.singleIngredient,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -313,11 +313,11 @@ class NutritionRow extends StatelessWidget {
   final String? nutritionFact, nutritionQty;
   final EdgeInsets leftMargin;
   const NutritionRow({
-    Key? key,
+    super.key,
     required this.nutritionFact,
     required this.nutritionQty,
     this.leftMargin = const EdgeInsets.only(left: 16),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -334,8 +334,8 @@ class NutritionRow extends StatelessWidget {
 
 class NutritionSeparator extends StatelessWidget {
   const NutritionSeparator({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

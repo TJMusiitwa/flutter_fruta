@@ -6,14 +6,18 @@ class FavouritesBottomWidget extends StatelessWidget {
   final String? name, calories, imagePath, desc, ing;
 
   const FavouritesBottomWidget(
-      {Key? key, this.imagePath, this.name, this.calories, this.desc, this.ing})
-      : super(key: key);
+      {super.key,
+      this.imagePath,
+      this.name,
+      this.calories,
+      this.desc,
+      this.ing});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2.5,
-      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.sizeOf(context).height / 2.5,
+      width: MediaQuery.sizeOf(context).width,
       child: PhysicalModel(
         color: CupertinoTheme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(10.0),
@@ -25,8 +29,8 @@ class FavouritesBottomWidget extends StatelessWidget {
               Stack(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 3.5,
-                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.sizeOf(context).height / 3.5,
+                    width: MediaQuery.sizeOf(context).width,
                     child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),

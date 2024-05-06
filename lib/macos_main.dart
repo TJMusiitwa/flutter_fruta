@@ -6,7 +6,7 @@ import 'package:flutter_fruta/macos_screens/rewards_screen.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacOSMain extends StatefulWidget {
-  const MacOSMain({Key? key}) : super(key: key);
+  const MacOSMain({super.key});
 
   @override
   State<MacOSMain> createState() => _MacOSMainState();

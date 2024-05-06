@@ -5,7 +5,7 @@ import 'package:flutter_fruta/widgets/mac_card.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacosMenuScreen extends StatefulWidget {
-  const MacosMenuScreen({Key? key}) : super(key: key);
+  const MacosMenuScreen({super.key});
 
   @override
   State<MacosMenuScreen> createState() => _MacosMenuScreenState();

@@ -5,13 +5,12 @@ class MenuListTile extends StatelessWidget {
   final VoidCallback? onTap;
 
   const MenuListTile(
-      {Key? key,
+      {super.key,
       this.imagePath,
       this.drinkName,
       this.drinkCalories,
       this.onTap,
-      this.ingredients})
-      : super(key: key);
+      this.ingredients});
   @override
   Widget build(BuildContext context) {
     return CupertinoListTile(

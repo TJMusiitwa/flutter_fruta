@@ -25,9 +25,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          const CupertinoSliverNavigationBar(
-            largeTitle: Text('Menu'),
-          ),
+          const CupertinoSliverNavigationBar(largeTitle: Text('Menu')),
         ];
       },
       body: FutureBuilder(
@@ -35,18 +33,14 @@ class _MenuScreenState extends State<MenuScreen> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting &&
               snapshot.data != null) {
-            return const Center(
-              child: CupertinoActivityIndicator(),
-            );
+            return const Center(child: CupertinoActivityIndicator());
           }
           if (snapshot.hasError) {
             debugPrint(snapshot.error.toString());
           }
 
           if (snapshot.data == null) {
-            return const Center(
-              child: CupertinoActivityIndicator(),
-            );
+            return const Center(child: CupertinoActivityIndicator());
           }
 
           final smoothie = smoothieFromJson(snapshot.data.toString());
@@ -71,8 +65,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         onTap: () => Navigator.push(
                           context,
                           CupertinoPageRoute(
-                            builder: (context) => DrinkViewWidget(
-                                drinkName: smoothieItem.smoothieName),
+                            builder: (context) =>
+                                DrinkViewWidget(smoothie: smoothieItem),
                           ),
                         ),
                       );

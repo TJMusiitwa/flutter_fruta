@@ -9,8 +9,7 @@ class FrostyBackground extends StatelessWidget {
   final Widget child;
 
   const FrostyBackground(
-      {Key? key, this.color, this.intensity = 25, required this.child})
-      : super(key: key);
+      {super.key, this.color, this.intensity = 25, required this.child});
   @override
   Widget build(BuildContext context) {
     return ClipRect(
@@ -41,15 +40,14 @@ class PressableCard extends StatefulWidget {
   final Duration duration;
 
   const PressableCard(
-      {Key? key,
+      {super.key,
       required this.onPressed,
       this.borderRadius = const BorderRadius.all(Radius.circular(10)),
       this.upElevation = 2,
       this.downElevation = 0,
       this.shadowColor = MacosColors.alternatingContentBackgroundColor,
       this.duration = const Duration(milliseconds: 100),
-      required this.child})
-      : super(key: key);
+      required this.child});
   @override
   State<PressableCard> createState() => _PressableCardState();
 }
@@ -94,8 +92,8 @@ class MacCard extends StatelessWidget {
     this.cardSubtitle2,
     this.enableCornerIcon = false,
     this.onPressed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final String cardImage;
   final String cardTitle;
   final String? cardSubtitle;

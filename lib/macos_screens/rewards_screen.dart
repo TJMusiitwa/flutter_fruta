@@ -4,7 +4,7 @@ import 'package:flutter_fruta/widgets/rewardCircles.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacosRewardsScreen extends StatefulWidget {
-  const MacosRewardsScreen({Key? key}) : super(key: key);
+  const MacosRewardsScreen({super.key});
 
   @override
   State<MacosRewardsScreen> createState() => _MacosRewardsScreenState();

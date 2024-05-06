@@ -34,7 +34,7 @@ class FrostyBackground extends StatelessWidget {
 class RecipeCard extends StatelessWidget {
   final String? imagePath;
 
-  const RecipeCard({Key? key, this.imagePath}) : super(key: key);
+  const RecipeCard({super.key, this.imagePath});
 
   @override
   Widget build(BuildContext context) {

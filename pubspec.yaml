@@ -6,24 +6,24 @@ publish_to: 'none'
 version: 3.0.0
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.3.4 <4.0.0'
 
 dependencies:
   animated_background: ^2.0.0
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.8
   # cupertino_list_tile: ^0.2.1+1
   flip_card: ^0.7.0
   flutter:
     sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  macos_ui: ^2.0.0
+  macos_ui: ^2.0.7
   modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^2.0.2
-  flutter_native_splash: ^2.3.8
+  flutter_lints: ^3.0.2
+  flutter_native_splash: ^2.4.0
   flutter_test:
     sdk: flutter
 

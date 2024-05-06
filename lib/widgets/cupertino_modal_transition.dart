@@ -22,12 +22,12 @@ class CupertinoModalTransition extends StatelessWidget {
   final Widget behindChild;
 
   const CupertinoModalTransition({
-    Key? key,
+    super.key,
     required this.animation,
     required this.child,
     required this.behindChild,
     this.animationCurve,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

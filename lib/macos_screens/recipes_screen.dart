@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacosRecipesScreen extends StatelessWidget {
-  const MacosRecipesScreen({Key? key}) : super(key: key);
+  const MacosRecipesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

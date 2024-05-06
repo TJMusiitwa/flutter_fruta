@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class MacosFavouritesScreen extends StatelessWidget {
-  const MacosFavouritesScreen({Key? key}) : super(key: key);
+  const MacosFavouritesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

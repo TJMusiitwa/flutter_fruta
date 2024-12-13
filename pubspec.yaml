@@ -3,10 +3,10 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 3.0.0
+version: 3.0.1
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: '>=3.5.4 <4.0.0'
 
 dependencies:
   animated_background: ^2.0.0
@@ -17,13 +17,13 @@ dependencies:
     sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  macos_ui: ^2.0.7
+  macos_ui: ^2.0.9
   modal_bottom_sheet: ^3.0.0-pre
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^3.0.2
-  flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.14.2
+  flutter_lints: ^5.0.0
+  flutter_native_splash: ^2.4.3
   flutter_test:
     sdk: flutter
 

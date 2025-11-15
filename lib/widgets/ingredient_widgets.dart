@@ -38,32 +38,23 @@ class BackIngredientCard extends StatelessWidget {
               children: [
                 Text(
                   'Nutrition Facts',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .navTitleTextStyle
-                      .copyWith(fontSize: 35),
+                  style: CupertinoTheme.of(
+                    context,
+                  ).textTheme.navTitleTextStyle.copyWith(fontSize: 35),
                 ),
                 Text(
                   'Serving Size 1 Cup',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
-                      .copyWith(fontSize: 15),
+                  style: CupertinoTheme.of(
+                    context,
+                  ).textTheme.textStyle.copyWith(fontSize: 15),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Text(
                   '112 calories',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
+                  style: CupertinoTheme.of(context).textTheme.textStyle
                       .copyWith(fontSize: 20, fontWeight: FontWeight.w400),
                 ),
-                Container(
-                  height: 1,
-                  color: CupertinoColors.separator,
-                ),
+                Container(height: 1, color: CupertinoColors.separator),
                 NutritionFactsList(singleIngredient: singleIngredient),
               ],
             ),
@@ -80,9 +71,11 @@ class BackIngredientCard extends StatelessWidget {
                   const Spacer(),
                   CupertinoButton(
                     onPressed: () => cardKey.currentState!.toggleCard(),
-                    child: Icon(CupertinoIcons.arrow_left_circle_fill,
-                        size: 40,
-                        color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+                    child: Icon(
+                      CupertinoIcons.arrow_left_circle_fill,
+                      size: 40,
+                      color: CupertinoColors.inactiveGray.withOpacity(0.7),
+                    ),
                   ),
                 ],
               ),
@@ -115,8 +108,9 @@ class FrontIngredientCard extends StatelessWidget {
             child: Hero(
               tag: singleIngredient.identifier,
               child: Image.asset(
-                  'assets/ingredients/${singleIngredient.identifier}.jpg',
-                  fit: BoxFit.cover),
+                'assets/ingredients/${singleIngredient.identifier}.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Positioned(
@@ -124,9 +118,11 @@ class FrontIngredientCard extends StatelessWidget {
             right: 6,
             child: CupertinoButton(
               onPressed: () => Navigator.pop(context),
-              child: Icon(CupertinoIcons.clear_circled_solid,
-                  size: 40,
-                  color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+              child: Icon(
+                CupertinoIcons.clear_circled_solid,
+                size: 40,
+                color: CupertinoColors.inactiveGray.withOpacity(0.7),
+              ),
             ),
           ),
           Positioned(
@@ -134,9 +130,11 @@ class FrontIngredientCard extends StatelessWidget {
             right: 6,
             child: CupertinoButton(
               onPressed: () => cardKey.currentState!.toggleCard(),
-              child: Icon(CupertinoIcons.info_circle_fill,
-                  size: 40,
-                  color: CupertinoColors.inactiveGray.withOpacity(0.7)),
+              child: Icon(
+                CupertinoIcons.info_circle_fill,
+                size: 40,
+                color: CupertinoColors.inactiveGray.withOpacity(0.7),
+              ),
             ),
           ),
           Text(
@@ -145,11 +143,12 @@ class FrontIngredientCard extends StatelessWidget {
             textAlign: TextAlign.center,
             softWrap: true,
             style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                foreground: Paint()
-                  ..blendMode = BlendMode.softLight
-                  ..color = CupertinoColors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+              foreground: Paint()
+                ..blendMode = BlendMode.softLight
+                ..color = CupertinoColors.black,
+            ),
           ),
         ],
       ),
@@ -160,19 +159,14 @@ class FrontIngredientCard extends StatelessWidget {
 class IngredientGridItem extends StatelessWidget {
   final Ingredient singleIngredient;
 
-  const IngredientGridItem({
-    super.key,
-    required this.singleIngredient,
-  });
+  const IngredientGridItem({super.key, required this.singleIngredient});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 180,
       width: 180,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -181,8 +175,9 @@ class IngredientGridItem extends StatelessWidget {
             child: Hero(
               tag: singleIngredient.identifier,
               child: Image.asset(
-                  'assets/ingredients/${singleIngredient.identifier}.jpg',
-                  fit: BoxFit.cover),
+                'assets/ingredients/${singleIngredient.identifier}.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Text(
@@ -191,11 +186,12 @@ class IngredientGridItem extends StatelessWidget {
             textAlign: TextAlign.center,
             softWrap: true,
             style: CupertinoTheme.of(context).textTheme.textStyle.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                foreground: Paint()
-                  ..blendMode = BlendMode.softLight
-                  ..color = CupertinoColors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+              foreground: Paint()
+                ..blendMode = BlendMode.softLight
+                ..color = CupertinoColors.black,
+            ),
           ),
         ],
       ),
@@ -206,10 +202,7 @@ class IngredientGridItem extends StatelessWidget {
 class NutritionFactsList extends StatelessWidget {
   final Ingredient singleIngredient;
 
-  const NutritionFactsList({
-    super.key,
-    required this.singleIngredient,
-  });
+  const NutritionFactsList({super.key, required this.singleIngredient});
 
   @override
   Widget build(BuildContext context) {
@@ -333,15 +326,10 @@ class NutritionRow extends StatelessWidget {
 }
 
 class NutritionSeparator extends StatelessWidget {
-  const NutritionSeparator({
-    super.key,
-  });
+  const NutritionSeparator({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 0.5,
-      color: CupertinoColors.separator,
-    );
+    return Container(height: 0.5, color: CupertinoColors.separator);
   }
 }

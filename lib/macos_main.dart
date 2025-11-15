@@ -20,27 +20,28 @@ class _MacOSMainState extends State<MacOSMain> {
     return MacosWindow(
       sidebar: Sidebar(
         builder: (context, controller) => SidebarItems(
-            currentIndex: pageIndex,
-            onChanged: (i) => setState(() => pageIndex = i),
-            scrollController: controller,
-            items: const [
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.list_bullet),
-                label: Text('Menu'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.heart),
-                label: Text('Favorites'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.book_fill),
-                label: Text('Recipes'),
-              ),
-              SidebarItem(
-                leading: MacosIcon(CupertinoIcons.checkmark_seal),
-                label: Text('Rewards'),
-              ),
-            ]),
+          currentIndex: pageIndex,
+          onChanged: (i) => setState(() => pageIndex = i),
+          scrollController: controller,
+          items: const [
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.list_bullet),
+              label: Text('Menu'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.heart),
+              label: Text('Favorites'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.book_fill),
+              label: Text('Recipes'),
+            ),
+            SidebarItem(
+              leading: MacosIcon(CupertinoIcons.checkmark_seal),
+              label: Text('Rewards'),
+            ),
+          ],
+        ),
         minWidth: 200,
         isResizable: false,
         bottom: const MacosListTile(
@@ -55,7 +56,7 @@ class _MacOSMainState extends State<MacOSMain> {
           MacosMenuScreen(),
           MacosFavouritesScreen(),
           MacosRecipesScreen(),
-          MacosRewardsScreen()
+          MacosRewardsScreen(),
         ],
       ),
     );

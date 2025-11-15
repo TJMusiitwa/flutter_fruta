@@ -9,9 +9,7 @@ class RecipesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        const CupertinoSliverNavigationBar(
-          largeTitle: Text('Recipes'),
-        ),
+        const CupertinoSliverNavigationBar(largeTitle: Text('Recipes')),
         SliverSafeArea(
           sliver: SliverFillRemaining(
             child: Padding(
@@ -24,9 +22,7 @@ class RecipesScreen extends StatelessWidget {
                       imagePath: 'assets/smoothie/recipes-button-bg@1x.png',
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
                     child: Container(
@@ -43,9 +39,9 @@ class RecipesScreen extends StatelessWidget {
                             alignment: Alignment.center,
                             child: Text(
                               'Add some smoothies to your favourites to unlock their recipes',
-                              style: CupertinoTheme.of(context)
-                                  .textTheme
-                                  .textStyle,
+                              style: CupertinoTheme.of(
+                                context,
+                              ).textTheme.textStyle,
                             ),
                           );
                         }
@@ -58,8 +54,8 @@ class RecipesScreen extends StatelessWidget {
                             return MenuListTile(
                               drinkName: favItem[index]['name'],
                               imagePath: favItem[index]['image'],
-                              drinkCalories:
-                                  favItem[index]['calories'].toString(),
+                              drinkCalories: favItem[index]['calories']
+                                  .toString(),
                               ingredients: favItem[index]['ingredients'],
                               onTap: () => Navigator.push(
                                 context,
@@ -74,13 +70,14 @@ class RecipesScreen extends StatelessWidget {
                           },
                           separatorBuilder: (BuildContext context, int index) =>
                               Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: Container(
-                              color: CupertinoColors
-                                  .separator.darkHighContrastColor,
-                              height: 0.5,
-                            ),
-                          ),
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: Container(
+                                  color: CupertinoColors
+                                      .separator
+                                      .darkHighContrastColor,
+                                  height: 0.5,
+                                ),
+                              ),
                         );
                       },
                     ),

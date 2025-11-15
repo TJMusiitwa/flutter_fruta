@@ -54,36 +54,32 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                       height: 300,
                       width: 368,
                       decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(24)),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(24),
+                        ),
                         image: DecorationImage(
-                            image: AssetImage(widget.imagePath!),
-                            fit: BoxFit.cover),
+                          image: AssetImage(widget.imagePath!),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Text(
                   'Ingredients',
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .navTitleTextStyle
+                  style: CupertinoTheme.of(context).textTheme.navTitleTextStyle
                       .copyWith(
                         color: CupertinoColors.systemGrey,
                         fontSize: 25,
                       ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Expanded(child: ListView())
+                const SizedBox(height: 10),
+                Expanded(child: ListView()),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

@@ -16,8 +16,9 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Future<String> _fetchSmoothieData() async {
-    return await DefaultAssetBundle.of(context)
-        .loadString('assets/smoothie_data.json');
+    return await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/smoothie_data.json');
   }
 
   @override
@@ -54,7 +55,7 @@ class _MenuScreenState extends State<MenuScreen> {
                       var smoothieItem = smoothie[index];
                       var ingredients = [
                         for (final i in smoothieItem.ingredients)
-                          i.localizedFoodItemNames.en
+                          i.localizedFoodItemNames.en,
                       ].join(', ');
 
                       return MenuListTile(
@@ -73,22 +74,22 @@ class _MenuScreenState extends State<MenuScreen> {
                     },
                     separatorBuilder: (BuildContext context, int index) =>
                         Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: Container(
-                        color: CupertinoColors.separator.darkHighContrastColor,
-                        height: 0.5,
-                      ),
-                    ),
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Container(
+                            color:
+                                CupertinoColors.separator.darkHighContrastColor,
+                            height: 0.5,
+                          ),
+                        ),
                   ),
                 )
               : Center(
                   child: Text(
                     'There are no smoothies to show',
                     softWrap: true,
-                    style: CupertinoTheme.of(context)
-                        .textTheme
-                        .textStyle
-                        .copyWith(fontSize: 25),
+                    style: CupertinoTheme.of(
+                      context,
+                    ).textTheme.textStyle.copyWith(fontSize: 25),
                   ),
                 );
         },

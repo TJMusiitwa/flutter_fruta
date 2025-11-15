@@ -13,20 +13,23 @@ class RewardCircles extends StatelessWidget {
           width: 55.0,
           margin: const EdgeInsets.all(6.0),
           decoration: BoxDecoration(
-              //borderRadius: BorderRadius.circular(10.0),
-              color: CupertinoColors.systemIndigo.withOpacity(0.5),
-              shape: BoxShape.circle),
+            //borderRadius: BorderRadius.circular(10.0),
+            color: CupertinoColors.systemIndigo.withOpacity(0.5),
+            shape: BoxShape.circle,
+          ),
           child: const Icon(CupertinoIcons.checkmark_seal_fill),
         ),
       );
     }
     return SizedBox(
-        height: 10.0,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
-            clipBehavior: Clip.antiAlias,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(2.0),
-            children: widgets));
+      height: 10.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        clipBehavior: Clip.antiAlias,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(2.0),
+        children: widgets,
+      ),
+    );
   }
 }

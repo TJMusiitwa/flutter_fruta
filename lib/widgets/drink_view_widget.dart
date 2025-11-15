@@ -37,24 +37,24 @@ class DrinkViewWidget extends StatelessWidget {
                 children: [
                   ConstrainedBox(
                     constraints: BoxConstraints(
-                        minHeight: 300,
-                        maxHeight: MediaQuery.of(context).size.height / 1.5,
-                        minWidth: MediaQuery.of(context).size.width),
+                      minHeight: 300,
+                      maxHeight: MediaQuery.of(context).size.height / 1.5,
+                      minWidth: MediaQuery.of(context).size.width,
+                    ),
                     child: Hero(
                       tag: smoothie.smoothieName,
                       transitionOnUserGestures: true,
-                      child: Image.asset(
-                        smoothie.imagePath,
-                        fit: BoxFit.cover,
-                      ),
+                      child: Image.asset(smoothie.imagePath, fit: BoxFit.cover),
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: MediaQuery.platformBrightnessOf(context) ==
-                                Brightness.dark
-                            ? CupertinoColors.systemGrey6.darkColor
-                            : CupertinoColors.systemGrey6),
+                      color:
+                          MediaQuery.platformBrightnessOf(context) ==
+                              Brightness.dark
+                          ? CupertinoColors.systemGrey6.darkColor
+                          : CupertinoColors.systemGrey6,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -78,9 +78,10 @@ class DrinkViewWidget extends StatelessWidget {
                                 .textTheme
                                 .textStyle
                                 .copyWith(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 15,
-                                    color: CupertinoColors.systemGrey),
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15,
+                                  color: CupertinoColors.systemGrey,
+                                ),
                           ),
                         ],
                       ),
@@ -101,49 +102,57 @@ class DrinkViewWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 8, right: 8, bottom: 90),
+                    padding: const EdgeInsets.only(
+                      left: 8,
+                      right: 8,
+                      bottom: 90,
+                    ),
                     child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 16,
-                                crossAxisSpacing: 16),
-                        itemCount: smoothie.ingredients.length,
-                        itemBuilder: (context, index) {
-                          var singleIngredient = smoothie.ingredients[index];
-                          return GestureDetector(
-                            onTap: () {
-                              showCupertinoDialog(
-                                context: context,
-                                useRootNavigator: false,
-                                builder: (_) => CupertinoPopupSurface(
-                                  isSurfacePainted: true,
-                                  child: Center(
-                                    child: SizedBox(
-                                      height: 500,
-                                      width: 400,
-                                      child: FlipCard(
-                                        key: cardKey,
-                                        flipOnTouch: false,
-                                        front: FrontIngredientCard(
-                                            singleIngredient: singleIngredient,
-                                            cardKey: cardKey),
-                                        back: BackIngredientCard(
-                                            singleIngredient: singleIngredient,
-                                            cardKey: cardKey),
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                          ),
+                      itemCount: smoothie.ingredients.length,
+                      itemBuilder: (context, index) {
+                        var singleIngredient = smoothie.ingredients[index];
+                        return GestureDetector(
+                          onTap: () {
+                            showCupertinoDialog(
+                              context: context,
+                              useRootNavigator: false,
+                              builder: (_) => CupertinoPopupSurface(
+                                isSurfacePainted: true,
+                                child: Center(
+                                  child: SizedBox(
+                                    height: 500,
+                                    width: 400,
+                                    child: FlipCard(
+                                      key: cardKey,
+                                      flipOnTouch: false,
+                                      front: FrontIngredientCard(
+                                        singleIngredient: singleIngredient,
+                                        cardKey: cardKey,
+                                      ),
+                                      back: BackIngredientCard(
+                                        singleIngredient: singleIngredient,
+                                        cardKey: cardKey,
                                       ),
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                            child: IngredientGridItem(
-                                singleIngredient: singleIngredient),
-                          );
-                        }),
+                              ),
+                            );
+                          },
+                          child: IngredientGridItem(
+                            singleIngredient: singleIngredient,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -208,7 +217,7 @@ class _FavouriteButtonState extends State<FavouriteButton> {
               'desc': widget.smoothie.description,
               'ingredients': [
                 for (var item in widget.smoothie.ingredients)
-                  item.localizedFoodItemNames.en
+                  item.localizedFoodItemNames.en,
               ].join(', '),
             });
           }
@@ -241,10 +250,11 @@ class PurchaseScreen extends StatelessWidget {
         Container(
           //height: MediaQuery.of(context).size.height / 1.4,
           decoration: BoxDecoration(
-            color: CupertinoColors.white.withOpacity(0.0),
+            color: CupertinoColors.white.withAlpha(0),
             image: DecorationImage(
-                image: AssetImage(smoothieDetails.imagePath),
-                fit: BoxFit.cover),
+              image: AssetImage(smoothieDetails.imagePath),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         BackdropFilter(
@@ -259,7 +269,9 @@ class PurchaseScreen extends StatelessWidget {
             height: 300,
             padding: const EdgeInsets.all(36),
             decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: CupertinoColors.white),
+              shape: BoxShape.circle,
+              color: CupertinoColors.white,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -271,25 +283,25 @@ class PurchaseScreen extends StatelessWidget {
                       .textTheme
                       .navLargeTitleTextStyle
                       .copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: CupertinoColors.black),
+                        fontWeight: FontWeight.bold,
+                        color: CupertinoColors.black,
+                      ),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   'We will notify you when your order is ready.',
                   textAlign: TextAlign.center,
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
+                  style: CupertinoTheme.of(context).textTheme.textStyle
                       .copyWith(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 20,
-                          color: CupertinoColors.systemGrey),
-                )
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20,
+                        color: CupertinoColors.systemGrey,
+                      ),
+                ),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

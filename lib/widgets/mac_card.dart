@@ -8,8 +8,12 @@ class FrostyBackground extends StatelessWidget {
   final double intensity;
   final Widget child;
 
-  const FrostyBackground(
-      {super.key, this.color, this.intensity = 25, required this.child});
+  const FrostyBackground({
+    super.key,
+    this.color,
+    this.intensity = 25,
+    required this.child,
+  });
   @override
   Widget build(BuildContext context) {
     return ClipRect(
@@ -39,15 +43,16 @@ class PressableCard extends StatefulWidget {
 
   final Duration duration;
 
-  const PressableCard(
-      {super.key,
-      required this.onPressed,
-      this.borderRadius = const BorderRadius.all(Radius.circular(10)),
-      this.upElevation = 2,
-      this.downElevation = 0,
-      this.shadowColor = MacosColors.alternatingContentBackgroundColor,
-      this.duration = const Duration(milliseconds: 100),
-      required this.child});
+  const PressableCard({
+    super.key,
+    required this.onPressed,
+    this.borderRadius = const BorderRadius.all(Radius.circular(10)),
+    this.upElevation = 2,
+    this.downElevation = 0,
+    this.shadowColor = MacosColors.alternatingContentBackgroundColor,
+    this.duration = const Duration(milliseconds: 100),
+    required this.child,
+  });
   @override
   State<PressableCard> createState() => _PressableCardState();
 }
@@ -130,20 +135,22 @@ class MacCard extends StatelessWidget {
                       style: MacosTheme.of(context).typography.title1,
                     ),
                     const SizedBox(height: 5),
-                    Text(cardSubtitle!,
-                        style: MacosTheme.of(context).typography.headline),
+                    Text(
+                      cardSubtitle!,
+                      style: MacosTheme.of(context).typography.headline,
+                    ),
                     const SizedBox(height: 7.0),
                     Text(
                       cardSubtitle2!,
-                      style: MacosTheme.of(context).typography.body.copyWith(
-                            fontWeight: FontWeight.w400,
-                          ),
+                      style: MacosTheme.of(
+                        context,
+                      ).typography.body.copyWith(fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

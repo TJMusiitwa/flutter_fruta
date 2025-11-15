@@ -17,7 +17,7 @@ class MacosRecipesScreen extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder: (_, __) => Padding(
+          builder: (_, _) => Padding(
             padding: const EdgeInsets.only(left: 8, top: 0),
             child: Column(
               children: [
@@ -27,9 +27,7 @@ class MacosRecipesScreen extends StatelessWidget {
                     imagePath: 'assets/smoothie/recipes-button-bg@1x.png',
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Container(
@@ -46,8 +44,9 @@ class MacosRecipesScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             'Add some smoothies to your favourites to unlock their recipes',
-                            style:
-                                CupertinoTheme.of(context).textTheme.textStyle,
+                            style: CupertinoTheme.of(
+                              context,
+                            ).textTheme.textStyle,
                           ),
                         );
                       }
@@ -58,22 +57,24 @@ class MacosRecipesScreen extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           var favItem = box.values.toList();
                           return MenuListTile(
-                              drinkName: favItem[index]['name'],
-                              imagePath: favItem[index]['image'],
-                              drinkCalories:
-                                  favItem[index]['calories'].toString(),
-                              ingredients: favItem[index]['ingredients'],
-                              onTap: () {});
+                            drinkName: favItem[index]['name'],
+                            imagePath: favItem[index]['image'],
+                            drinkCalories: favItem[index]['calories']
+                                .toString(),
+                            ingredients: favItem[index]['ingredients'],
+                            onTap: () {},
+                          );
                         },
                         separatorBuilder: (BuildContext context, int index) =>
                             Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: Container(
-                            color:
-                                CupertinoColors.separator.darkHighContrastColor,
-                            height: 0.5,
-                          ),
-                        ),
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Container(
+                                color: CupertinoColors
+                                    .separator
+                                    .darkHighContrastColor,
+                                height: 0.5,
+                              ),
+                            ),
                       );
                     },
                   ),

@@ -3,11 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 class FrostyBackground extends StatelessWidget {
-  const FrostyBackground({
-    this.color,
-    this.intensity = 25,
-    this.child,
-  });
+  const FrostyBackground({this.color, this.intensity = 25, this.child});
 
   final Color? color;
   final double intensity;
@@ -50,37 +46,38 @@ class RecipeCard extends StatelessWidget {
             Container(
               height: 250,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(imagePath!))),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(imagePath!),
+                ),
+              ),
             ),
             Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: FrostyBackground(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Unlock All Recipes',
-                          style: CupertinoTheme.of(context)
-                              .textTheme
-                              .navTitleTextStyle
-                              .copyWith(fontSize: 23),
-                        ),
-                        Text(
-                          'Loading...',
-                          style: CupertinoTheme.of(context)
-                              .textTheme
-                              .textStyle
-                              .copyWith(color: CupertinoColors.systemGrey),
-                        ),
-                      ],
-                    ),
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: FrostyBackground(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Unlock All Recipes',
+                        style: CupertinoTheme.of(
+                          context,
+                        ).textTheme.navTitleTextStyle.copyWith(fontSize: 23),
+                      ),
+                      Text(
+                        'Loading...',
+                        style: CupertinoTheme.of(context).textTheme.textStyle
+                            .copyWith(color: CupertinoColors.systemGrey),
+                      ),
+                    ],
                   ),
-                ))
+                ),
+              ),
+            ),
           ],
         ),
       ),

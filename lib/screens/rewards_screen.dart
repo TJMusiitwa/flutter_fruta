@@ -34,51 +34,48 @@ class _RewardsScreenState extends State<RewardsScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PhysicalModel(
-                  color: CupertinoColors.lightBackgroundGray,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  shadowColor: CupertinoColors.black,
-                  elevation: 2,
-                  child: SizedBox(
-                    //height: 200,
-                    width: 350,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Rewards Card',
-                            style: CupertinoTheme.of(context)
-                                .textTheme
-                                .dateTimePickerTextStyle
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 65,
-                            width: double.maxFinite,
-                            child: RewardCircles(),
-                          ),
-                          SizedBox(
-                            height: 65,
-                            child: RewardCircles(),
-                          )
-                        ],
-                      ),
+                color: CupertinoColors.lightBackgroundGray,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                shadowColor: CupertinoColors.black,
+                elevation: 2,
+                child: SizedBox(
+                  //height: 200,
+                  width: 350,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Rewards Card',
+                          style: CupertinoTheme.of(context)
+                              .textTheme
+                              .dateTimePickerTextStyle
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 65,
+                          width: double.maxFinite,
+                          child: RewardCircles(),
+                        ),
+                        SizedBox(height: 65, child: RewardCircles()),
+                      ],
                     ),
-                  )),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 10.0, right: 10, top: 5),
                 child: Text(
                   'You are 10 points away from a free \nsmoothie!',
                   textAlign: TextAlign.center,
                   softWrap: true,
-                  style: CupertinoTheme.of(context)
-                      .textTheme
-                      .textStyle
-                      .copyWith(fontSize: 18),
+                  style: CupertinoTheme.of(
+                    context,
+                  ).textTheme.textStyle.copyWith(fontSize: 18),
                 ),
-              )
+              ),
             ],
           ),
         ),

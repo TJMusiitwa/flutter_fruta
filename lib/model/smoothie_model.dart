@@ -5,7 +5,8 @@
 import 'dart:convert';
 
 List<Smoothie> smoothieFromJson(String str) => List<Smoothie>.from(
-    (json.decode(str) as List).map((x) => Smoothie.fromMap(x)));
+  (json.decode(str) as List).map((x) => Smoothie.fromMap(x)),
+);
 
 List<Ingredient> ingredientsFromJson(String str) =>
     List<Ingredient>.from(json.decode(str).map((x) => Ingredient.fromMap(x)));
@@ -31,23 +32,24 @@ class Smoothie {
   });
 
   factory Smoothie.fromMap(Map<String, dynamic> json) => Smoothie(
-        smoothieName: json["smoothie_name"],
-        calories: json["calories"],
-        description: json["description"],
-        imagePath: json["image_path"],
-        isFavourite: json["isFavourite"],
-        ingredients: List<Ingredient>.from(
-            json["ingredients"].map((x) => Ingredient.fromMap(x))),
-      );
+    smoothieName: json["smoothie_name"],
+    calories: json["calories"],
+    description: json["description"],
+    imagePath: json["image_path"],
+    isFavourite: json["isFavourite"],
+    ingredients: List<Ingredient>.from(
+      json["ingredients"].map((x) => Ingredient.fromMap(x)),
+    ),
+  );
 
   Map<String, dynamic> toMap() => {
-        "smoothie_name": smoothieName,
-        "calories": calories,
-        "description": description,
-        "image_path": imagePath,
-        "isFavourite": isFavourite,
-        "ingredients": List<dynamic>.from(ingredients.map((x) => x.toMap())),
-      };
+    "smoothie_name": smoothieName,
+    "calories": calories,
+    "description": description,
+    "image_path": imagePath,
+    "isFavourite": isFavourite,
+    "ingredients": List<dynamic>.from(ingredients.map((x) => x.toMap())),
+  };
 }
 
 class Ingredient {
@@ -94,49 +96,50 @@ class Ingredient {
   });
 
   factory Ingredient.fromMap(Map<String, dynamic> json) => Ingredient(
-        identifier: json["identifier"],
-        localizedFoodItemNames:
-            LocalizedFoodItemNames.fromMap(json["localizedFoodItemNames"]),
-        referenceMass: json["referenceMass"],
-        density: json["density"],
-        totalSaturatedFat: json["totalSaturatedFat"],
-        totalMonounsaturatedFat: json["totalMonounsaturatedFat"],
-        totalPolyunsaturatedFat: json["totalPolyunsaturatedFat"],
-        cholesterol: json["cholesterol"],
-        sodium: json["sodium"],
-        totalCarbohydrates: json["totalCarbohydrates"],
-        dietaryFiber: json["dietaryFiber"],
-        sugar: json["sugar"],
-        protein: json["protein"],
-        calcium: json["calcium"],
-        potassium: json["potassium"],
-        vitaminA: json["vitaminA"],
-        vitaminC: json["vitaminC"],
-        iron: json["iron"],
-        ingredientImage: json["ingredient_image"],
-      );
+    identifier: json["identifier"],
+    localizedFoodItemNames: LocalizedFoodItemNames.fromMap(
+      json["localizedFoodItemNames"],
+    ),
+    referenceMass: json["referenceMass"],
+    density: json["density"],
+    totalSaturatedFat: json["totalSaturatedFat"],
+    totalMonounsaturatedFat: json["totalMonounsaturatedFat"],
+    totalPolyunsaturatedFat: json["totalPolyunsaturatedFat"],
+    cholesterol: json["cholesterol"],
+    sodium: json["sodium"],
+    totalCarbohydrates: json["totalCarbohydrates"],
+    dietaryFiber: json["dietaryFiber"],
+    sugar: json["sugar"],
+    protein: json["protein"],
+    calcium: json["calcium"],
+    potassium: json["potassium"],
+    vitaminA: json["vitaminA"],
+    vitaminC: json["vitaminC"],
+    iron: json["iron"],
+    ingredientImage: json["ingredient_image"],
+  );
 
   Map<String, dynamic> toMap() => {
-        "identifier": identifier,
-        "localizedFoodItemNames": localizedFoodItemNames.toMap(),
-        "referenceMass": referenceMass,
-        "density": density,
-        "totalSaturatedFat": totalSaturatedFat,
-        "totalMonounsaturatedFat": totalMonounsaturatedFat,
-        "totalPolyunsaturatedFat": totalPolyunsaturatedFat,
-        "cholesterol": cholesterol,
-        "sodium": sodium,
-        "totalCarbohydrates": totalCarbohydrates,
-        "dietaryFiber": dietaryFiber,
-        "sugar": sugar,
-        "protein": protein,
-        "calcium": calcium,
-        "potassium": potassium,
-        "vitaminA": vitaminA,
-        "vitaminC": vitaminC,
-        "iron": iron,
-        "ingredient_image": ingredientImage,
-      };
+    "identifier": identifier,
+    "localizedFoodItemNames": localizedFoodItemNames.toMap(),
+    "referenceMass": referenceMass,
+    "density": density,
+    "totalSaturatedFat": totalSaturatedFat,
+    "totalMonounsaturatedFat": totalMonounsaturatedFat,
+    "totalPolyunsaturatedFat": totalPolyunsaturatedFat,
+    "cholesterol": cholesterol,
+    "sodium": sodium,
+    "totalCarbohydrates": totalCarbohydrates,
+    "dietaryFiber": dietaryFiber,
+    "sugar": sugar,
+    "protein": protein,
+    "calcium": calcium,
+    "potassium": potassium,
+    "vitaminA": vitaminA,
+    "vitaminC": vitaminC,
+    "iron": iron,
+    "ingredient_image": ingredientImage,
+  };
 }
 
 class LocalizedFoodItemNames {
@@ -151,15 +154,7 @@ class LocalizedFoodItemNames {
   });
 
   factory LocalizedFoodItemNames.fromMap(Map<String, dynamic> json) =>
-      LocalizedFoodItemNames(
-        en: json["en"],
-        de: json["de"],
-        pt: json["pt"],
-      );
+      LocalizedFoodItemNames(en: json["en"], de: json["de"], pt: json["pt"]);
 
-  Map<String, dynamic> toMap() => {
-        "en": en,
-        "de": de,
-        "pt": pt,
-      };
+  Map<String, dynamic> toMap() => {"en": en, "de": de, "pt": pt};
 }
